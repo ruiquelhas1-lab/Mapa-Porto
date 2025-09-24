@@ -3,213 +3,133 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Garvetur Luxury Porto — Mapa do Porto (Freguesias + Pins)</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <title>Garvetur Luxury Porto — Mapa do Porto (CSV/XLSX/GeoJSON)</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
-    :root { --brand-bg:#f5efe6; --brand-accent:#bfa06a; --brand-dark:#111; --panel-bg:rgba(255,255,255,.96); --shadow:0 6px 24px rgba(0,0,0,.15); --radius:14px; }
-    html, body { height: 100%; margin: 0; background: var(--brand-bg); }
-    #map { position:absolute; inset:0; }
-    .controls { position:absolute; top:14px; left:14px; z-index:1000; background:var(--panel-bg); padding:12px; border-radius:var(--radius); box-shadow:var(--shadow); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 440px; border:1px solid #eee; }
-    .controls h3 { margin:0 0 8px; font-size:16px; color:var(--brand-dark); }
-    .sub { font-size:12px; color:#555; margin-bottom:6px; }
-    label { display:block; font-size:12px; margin-top:8px; }
-    input, textarea, select { width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px; }
-    button { margin-top:8px; padding:8px 10px; border:0; border-radius:10px; cursor:pointer; }
-    .btn { background:var(--brand-dark); color:#fff; }
-    .btn-secondary { background:#f3f3f3; color:#111; }
-    .badge { display:inline-block; padding:2px 6px; border-radius:6px; background:var(--brand-accent); color:#fff; font-size:10px; margin-left:6px; }
-    .legend { position:absolute; right:14px; bottom:14px; z-index:1000; background:var(--panel-bg); padding:10px; border-radius:var(--radius); box-shadow:var(--shadow); font-size:12px; border:1px solid #eee; }
-    .toolbar { position:absolute; right:14px; top:14px; z-index:1000; display:flex; gap:8px; flex-wrap:wrap; }
-    .toolbar button { background:var(--panel-bg); border:1px solid #eee; border-radius:10px; padding:8px 10px; box-shadow:var(--shadow); cursor:pointer; }
-    .filters { display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
-    .chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid #eee; border-radius:999px; padding:4px 8px; }
-    .swatch { width:10px; height:10px; border-radius:50%; border:1px solid rgba(0,0,0,.2); }
-    .freg-label { background: rgba(255,255,255,0.85); border-radius: 6px; padding: 2px 6px; border: 1px solid #ddd; font-weight: 600; }
+    html, body { height:100%; margin:0 }
+    #map { position:absolute; inset:0 }
+    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:#fff; padding:10px; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.12); font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width:460px }
+    .controls label { display:block; font-size:12px; margin-top:8px }
+    .controls input, .controls select, .controls textarea { width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px }
+    .controls button { margin-top:8px; padding:8px 10px; border:0; border-radius:10px; cursor:pointer; background:#111; color:#fff }
+    .toolbar { position:absolute; right:12px; top:12px; z-index:1000; display:flex; gap:8px }
+    .toolbar button { background:#fff; border:1px solid #eee; border-radius:10px; padding:8px 10px; box-shadow:0 6px 24px rgba(0,0,0,.12); cursor:pointer }
+    .freg-label { background: rgba(255,255,255,0.85); border-radius: 6px; padding: 2px 6px; border: 1px solid #ddd; font-weight: 600 }
   </style>
 </head>
 <body>
   <div class="controls">
-    <h3>Freguesias <span class="badge">Porto</span></h3>
-    <div class="sub">Importa CSV (vírgula ou ;) e GeoJSON. Aceita cabeçalhos alternativos (nome/empreendimento; latitude/longitude, etc.).</div>
-
-    <div class="filters">
-      <label class="chip"><span class="swatch" style="background:#22a447"></span><input type="checkbox" id="fLic" checked> Licenciado</label>
-      <label class="chip"><span class="swatch" style="background:#f39c12"></span><input type="checkbox" id="fObra" checked> Em construção</label>
-      <label class="chip"><span class="swatch" style="background:#2e86de"></span><input type="checkbox" id="fConc" checked> Concluído</label>
-    </div>
-
-    <label>Nome do empreendimento</label>
-    <input type="text" id="pinName" placeholder="Ex.: Gramoínhos Living" />
-
-    <label>Notas / Fase</label>
-    <textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X; data de entrega"></textarea>
-
+    <strong>Mapa do Porto</strong> — Importa **CSV, XLSX, GeoJSON** (cabeçalhos: name/notes/status/lat/lng).<br/>
+    <label>Importar ficheiro (CSV / XLSX / GeoJSON)</label>
+    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls,.geojson,.json" />
     <label>Estado</label>
     <select id="pinStatus">
       <option value="licenciado">Licenciado</option>
       <option value="em_construcao" selected>Em construção</option>
       <option value="concluido">Concluído</option>
     </select>
-
-    <button class="btn" id="enableAdd">Ativar modo “Adicionar Pin”</button>
-    <button class="btn-secondary" id="disableAdd">Desativar</button>
-
-    <label style="margin-top:12px;">Importar pins (GeoJSON ou CSV: name/empreendimento, notes/notas, status/estado, lat/latitude, lng/longitude)</label>
-    <input type="file" id="fileInput" accept=".json,.geojson,.csv" />
-    <button class="btn-secondary" id="clearPins">Limpar pins</button>
-    <button class="btn" id="exportPins">Exportar pins (GeoJSON)</button>
-
-    <label style="margin-top:12px;">Mostrar rótulos das freguesias</label>
-    <select id="labelsToggle">
-      <option value="on">Sim</option>
-      <option value="off">Não</option>
-    </select>
+    <label>Nome</label><input id="pinName" placeholder="Ex.: Empreendimento" />
+    <label>Notas</label><textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X"></textarea>
+    <button id="enableAdd">Ativar modo “Adicionar Pin”</button>
+    <button id="clearPins" style="background:#f3f3f3;color:#111">Limpar pins</button>
   </div>
-
   <div class="toolbar">
-    <button id="fitBtn">Recentrar no conteúdo</button>
+    <button id="fitBtn">Recentrar</button>
     <button id="switchBase">Alternar base</button>
   </div>
-
   <div id="map"></div>
 
-  <div class="legend">
-    <strong>Fontes:</strong><br/> OpenStreetMap — Tiles (com fallback)<br/> Águas do Porto (ArcGIS GeoJSON) — Freguesias
-  </div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script>
-    // ---- Base maps com fallback ----
-    const bases = [
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 20, attribution: '&copy; Contribuidores do OpenStreetMap' }),
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 20, attribution: '&copy; OpenStreetMap & CARTO' }),
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Esri, USGS, NOAA' })
+    const bases=[
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:20,attribution:'&copy; OSM'}),
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,attribution:'&copy; OSM & CARTO'}),
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri, USGS, NOAA'})
     ];
-    const map = L.map('map', { preferCanvas: true, zoomControl: true }).setView([41.1496, -8.6109], 12);
-    let baseIdx = 0; bases[baseIdx].addTo(map);
-    document.getElementById('switchBase').onclick = () => { map.removeLayer(bases[baseIdx]); baseIdx = (baseIdx+1)%bases.length; bases[baseIdx].addTo(map); };
-
-    // ---- Grupo de pins e utilitários ----
-    const pins = L.featureGroup().addTo(map);
-    const STATUS_COLORS = { licenciado:'#22a447', em_construcao:'#f39c12', concluido:'#2e86de' };
-    function coloredIcon(color) {
-      const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'><path d='M14 0C6.268 0 0 6.268 0 14c0 9.333 12.25 24.667 13.016 25.641a1.25 1.25 0 0 0 1.968 0C15.75 38.667 28 23.333 28 14 28 6.268 21.732 0 14 0z' fill='${color}' stroke='rgba(0,0,0,0.35)' stroke-width='1'/><circle cx='14' cy='14' r='5.5' fill='white' stroke='rgba(0,0,0,0.25)'/></svg>`);
-      return L.icon({ iconUrl: 'data:image/svg+xml;utf8,'+svg, iconSize:[28,40], iconAnchor:[14,40], popupAnchor:[0,-34] });
+    const map=L.map('map').setView([41.1496,-8.6109],12); let baseIdx=0; bases[baseIdx].addTo(map);
+    document.getElementById('switchBase').onclick=()=>{ map.removeLayer(bases[baseIdx]); baseIdx=(baseIdx+1)%bases.length; bases[baseIdx].addTo(map); };
+    const pins=L.featureGroup().addTo(map);
+    const COLORS={licenciado:'#22a447',em_construcao:'#f39c12',concluido:'#2e86de'};
+    function icon(c){const s=encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'><path d='M14 0C6.268 0 0 6.268 0 14c0 9.333 12.25 24.667 13.016 25.641a1.25 1.25 0 0 0 1.968 0C15.75 38.667 28 23.333 28 14 28 6.268 21.732 0 14 0z' fill='${c}' stroke='rgba(0,0,0,0.35)' stroke-width='1'/><circle cx='14' cy='14' r='5.5' fill='white' stroke='rgba(0,0,0,0.25)'/></svg>`);return L.icon({iconUrl:'data:image/svg+xml;utf8,'+s,iconSize:[28,40],iconAnchor:[14,40],popupAnchor:[0,-34]});}
+    function addPin(lat,lng,{name='Empreendimento',notes='',status='em_construcao'}={}){
+      const m=L.marker([lat,lng],{icon:icon(COLORS[status]||COLORS.em_construcao),draggable:true});
+      m.bindPopup(`<strong>${name}</strong><br>${notes}<br><small>${status.replace('_',' ')}</small><br><small>${lat.toFixed(6)}, ${lng.toFixed(6)}</small>`);
+      m.feature={type:'Feature',properties:{name,notes,status},geometry:{type:'Point',coordinates:[lng,lat]}};
+      pins.addLayer(m); return m;
     }
-    function normStatus(s){ s=(s||'').toString().trim().toLowerCase(); const map={'licença':'licenciado','licenca':'licenciado','obra':'em_construcao','em construção':'em_construcao','em construcao':'em_construcao','concluído':'concluido','entregue':'concluido'}; return map[s]||s||'em_construcao'; }
-    function createPin(latlng, {name='Empreendimento', notes='', status='em_construcao'}={}){
-      status = normStatus(status);
-      const color = STATUS_COLORS[status] || STATUS_COLORS.em_construcao;
-      const marker = L.marker(latlng, { draggable:true, icon: coloredIcon(color), status });
-      marker.bindPopup(`<strong>${name}</strong><br>${notes}<br><small>Estado: ${status.replace('_',' ')}</small><br><small>${latlng.lat.toFixed(6)}, ${latlng.lng.toFixed(6)}</small>`);
-      marker.on('dragend', () => marker.openPopup());
-      marker.feature = { type:'Feature', properties:{ name, notes, status }, geometry:{ type:'Point', coordinates:[latlng.lng, latlng.lat] } };
-      pins.addLayer(marker); return marker;
-    }
-    function fitPins(){ if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding:[40,40] }); }
-    document.getElementById('fitBtn').onclick = fitPins;
-
-    // ---- Adicionar manualmente ----
-    let addMode=false; const pinNameEl=document.getElementById('pinName'); const pinNotesEl=document.getElementById('pinNotes'); const pinStatusEl=document.getElementById('pinStatus');
-    document.getElementById('enableAdd').onclick=()=>{ addMode=true; };
-    document.getElementById('disableAdd').onclick=()=>{ addMode=false; };
-    map.on('click',(e)=>{ if(!addMode) return; const m=createPin(e.latlng,{name:pinNameEl.value.trim()||'Empreendimento', notes:pinNotesEl.value.trim()||'', status:pinStatusEl.value}); m.openPopup(); refreshVisibility(); });
-
-    // ---- Filtros ----
-    const fLic=document.getElementById('fLic'), fObra=document.getElementById('fObra'), fConc=document.getElementById('fConc');
-    function statusAllowed(s){ s=normStatus(s); return (s==='licenciado'&&fLic.checked)||(s==='em_construcao'&&fObra.checked)||(s==='concluido'&&fConc.checked); }
-    function refreshVisibility(){ pins.eachLayer(l=>{ const s=l.feature?.properties?.status||l.options.status||'em_construcao'; if(statusAllowed(s)){ if(!map.hasLayer(l)) l.addTo(map);} else { if(map.hasLayer(l)) map.removeLayer(l);} }); }
-    fLic.onchange=fObra.onchange=fConc.onchange=refreshVisibility;
-
-    // ---- Parser CSV robusto (suporta aspas e separador , ou ;) ----
-    function parseCSV(text){
-      // remover BOM
-      if (text.charCodeAt(0)===0xFEFF) text=text.slice(1);
-      const firstLine = (text.split(/\r?\n/)[0]||'').trim();
-      const sep = (firstLine.split(';').length > firstLine.split(',').length) ? ';' : ',';
-
-      // Parser simples que respeita aspas
-      const rows=[]; let row=[], field='', inQuotes=false; for(let i=0;i<text.length;i++){ const c=text[i], n=text[i+1];
-        if(c==='\"'){ if(inQuotes && n==='\"'){ field+='\"'; i++; } else { inQuotes=!inQuotes; } }
-        else if(c===sep && !inQuotes){ row.push(field); field=''; }
-        else if((c==='\n' || c==='\r') && !inQuotes){ if(field!==''||row.length){ row.push(field); rows.push(row); row=[]; field=''; } while(text[i+1]==='\n'||text[i+1]==='\r') i++; }
-        else { field+=c; }
-      }
-      if(field!==''||row.length) { row.push(field); rows.push(row); }
-
-      // Cabeçalhos normalizados
-      const headers=(rows.shift()||[]).map(h=>h.trim().toLowerCase());
-      function idx(names){ for(const name of names){ const i=headers.indexOf(name); if(i>-1) return i; } return -1; }
-      const iName=idx(['name','nome','empreendimento','título','titulo']);
-      const iNotes=idx(['notes','notas','descricao','descrição','observacoes','observações']);
-      const iStatus=idx(['status','estado','fase']);
-      const iLat=idx(['lat','latitude','y']);
-      const iLng=idx(['lng','lon','long','longitude','x']);
-
-      if(iLat===-1||iLng===-1){ throw new Error('Cabeçalhos em falta. Necessário lat/latitude e lng/longitude.'); }
-
+    document.getElementById('fitBtn').onclick=()=>{ if(pins.getLayers().length) map.fitBounds(pins.getBounds(),{padding:[40,40]}); };
+    document.getElementById('clearPins').onclick=()=>pins.clearLayers();
+    let addMode=false; const pinStatus=document.getElementById('pinStatus'), pinName=document.getElementById('pinName'), pinNotes=document.getElementById('pinNotes');
+    document.getElementById('enableAdd').onclick=()=>addMode=!addMode;
+    map.on('click',e=>{ if(!addMode) return; addPin(e.latlng.lat,e.latlng.lng,{name:pinName.value.trim()||'Empreendimento',notes:pinNotes.value.trim()||'',status:pinStatus.value}).openPopup(); });
+    function norm(v){return (v||'').toString().trim();}
+    function toNum(v){ if(v==null) return NaN; v=v.toString().trim().replace(',','.'); return parseFloat(v); }
+    function headersIdx(hdrs,names){names=Array.isArray(names)?names:[names]; for(let n of names){const i=hdrs.indexOf(n); if(i>-1) return i;} return -1;}
+    function parseCSV(txt){
+      if (txt.charCodeAt(0)===0xFEFF) txt=txt.slice(1);
+      const first=(txt.split(/\r?\n/)[0]||'').trim();
+      const sep=(first.split(';').length>first.split(',').length)?';':',';
+      const rows=[]; let row=[], field='', q=false;
+      for(let i=0;i<txt.length;i++){const c=txt[i],n=txt[i+1]; if(c==='"'){ if(q && n==='"'){ field+='"'; i++; } else { q=!q; } }
+        else if(c===sep && !q){ row.push(field); field=''; }
+        else if((c==='\n'||c==='\r') && !q){ if(field!==''||row.length){ row.push(field); rows.push(row); row=[]; field=''; } while(txt[i+1]==='\n'||txt[i+1]==='\r') i++; }
+        else { field+=c; } }
+      if(field!==''||row.length){ row.push(field); rows.push(row); }
+      const hdrs=(rows.shift()||[]).map(h=>norm(h).toLowerCase());
+      const iName=headersIdx(hdrs,['name','nome','empreendimento','título','titulo']);
+      const iNotes=headersIdx(hdrs,['notes','notas','descricao','descrição','observacoes','observações']);
+      const iStatus=headersIdx(hdrs,['status','estado','fase']);
+      const iLat=headersIdx(hdrs,['lat','latitude','y']);
+      const iLng=headersIdx(hdrs,['lng','lon','long','longitude','x']);
+      if(iLat===-1||iLng===-1) throw new Error('Cabeçalhos em falta (lat/latitude e lng/longitude).');
       const out=[];
       for(const r of rows){
-        const get=(i)=> (i>-1 && i<r.length ? (r[i]||'').toString().trim() : '');
-        let name=get(iName)||'Empreendimento', notes=get(iNotes)||'', status=get(iStatus)||'em_construcao';
-        // normalizar coordenadas (vírgula decimal -> ponto)
-        let latStr=(get(iLat)||'').replace(',', '.').replace(/\s+/g,'');
-        let lngStr=(get(iLng)||'').replace(',', '.').replace(/\s+/g,'');
-        const lat=parseFloat(latStr), lng=parseFloat(lngStr);
-        if(!isNaN(lat) && !isNaN(lng)){ out.push({name,notes,status,lat,lng}); }
+        const name = iName>-1? r[iName] : 'Empreendimento';
+        const notes = iNotes>-1? r[iNotes] : '';
+        const status = iStatus>-1? r[iStatus] : 'em_construcao';
+        const lat = toNum(r[iLat]), lng = toNum(r[iLng]);
+        if(!isNaN(lat) && !isNaN(lng)) out.push({name,notes,status,lat,lng});
       }
       return out;
     }
-
-    // ---- Importar ficheiro ----
-    document.getElementById('fileInput').addEventListener('change',(evt)=>{
-      const file=evt.target.files[0]; if(!file) return;
-      const reader=new FileReader();
-      reader.onload=(e)=>{
+    document.getElementById('fileInput').addEventListener('change', (evt)=>{
+      const f=evt.target.files[0]; if(!f) return;
+      const rdr=new FileReader();
+      rdr.onload=(e)=>{
         try{
-          const text=e.target.result;
-          if(file.name.toLowerCase().endsWith('.csv')){
-            const rows=parseCSV(text);
-            if(!rows.length) { alert('CSV sem linhas válidas. Verifique as colunas name/notes/status/lat/lng e os separadores.'); return; }
-            rows.forEach(r=>createPin([r.lat, r.lng], {name:r.name, notes:r.notes, status:r.status}));
-            fitPins(); refreshVisibility();
+          const name=f.name.toLowerCase();
+          if(name.endsWith('.geojson')||name.endsWith('.json')){
+            const geo=JSON.parse(e.target.result);
+            L.geoJSON(geo, { pointToLayer:(feat,latlng)=>addPin(latlng.lat,latlng.lng,{name:feat.properties?.name||'Empreendimento',notes:feat.properties?.notes||'',status:feat.properties?.status||'em_construcao'}) });
+            if(pins.getLayers().length) map.fitBounds(pins.getBounds(),{padding:[40,40]});
+          } else if(name.endsWith('.csv')){
+            const rows=parseCSV(e.target.result);
+            if(!rows.length) { alert('CSV sem linhas válidas. Verifique colunas name/notes/status/lat/lng.'); return; }
+            rows.forEach(r=>addPin(r.lat,r.lng,{name:r.name,notes:r.notes,status:r.status}));
+            map.fitBounds(pins.getBounds(),{padding:[40,40]});
+          } else if(name.endsWith('.xlsx')||name.endsWith('.xls')){
+            const wb=XLSX.read(new Uint8Array(e.target.result), {type:'array'});
+            const ws=wb.Sheets[wb.SheetNames[0]]; const json=XLSX.utils.sheet_to_json(ws, {defval:'', raw:false});
+            const hdrs=Object.keys(json[0]||{}).map(h=>h.toString().trim().toLowerCase());
+            function get(row,alts){ for(let a of alts){ if(a in row) return row[a]; const k=alts.find(x=>hdrs.includes(x)); if(k) return row[k]; } return ''; }
+            const rows=json.map(r=>({ 
+              name: get(r,['name','nome','empreendimento','titulo','título']),
+              notes: get(r,['notes','notas','descricao','descrição','observacoes','observações']),
+              status: get(r,['status','estado','fase'])||'em_construcao',
+              lat: parseFloat((get(r,['lat','latitude','y'])||'').toString().replace(',','.')),
+              lng: parseFloat((get(r,['lng','lon','long','longitude','x'])||'').toString().replace(',','.'))
+            })).filter(r=>!isNaN(r.lat)&&!isNaN(r.lng));
+            if(!rows.length){ alert('XLSX sem linhas válidas. Confirme colunas name/notes/status/lat/lng.'); return; }
+            rows.forEach(r=>addPin(r.lat,r.lng,{name:r.name,notes:r.notes,status:r.status}));
+            map.fitBounds(pins.getBounds(),{padding:[40,40]});
           } else {
-            const geo=JSON.parse(text);
-            L.geoJSON(geo, { pointToLayer:(f,latlng)=>createPin(latlng, { name: f.properties?.name||'Empreendimento', notes: f.properties?.notes||'', status: f.properties?.status||'em_construcao' }) });
-            fitPins(); refreshVisibility();
+            alert('Formato não suportado.');
           }
-        } catch(err){ console.error(err); alert('Erro a importar: '+err.message); }
+        } catch(err){ console.error(err); alert('Erro ao importar: '+err.message); }
       };
-      reader.readAsText(file);
+      if(f.name.toLowerCase().endsWith('.xlsx')||f.name.toLowerCase().endsWith('.xls')) rdr.readAsArrayBuffer(f); else rdr.readAsText(f);
     });
-
-    document.getElementById('clearPins').onclick=()=>{ pins.clearLayers(); };
-
-    document.getElementById('exportPins').onclick=()=>{
-      const features=[]; pins.eachLayer(l=>{ if(l.feature) features.push(l.feature); });
-      const fc={ type:'FeatureCollection', features };
-      const blob=new Blob([JSON.stringify(fc, null, 2)], { type:'application/json' });
-      const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='pins-porto.geojson'; a.click(); URL.revokeObjectURL(url);
-    };
-
-    // ---- Freguesias (com tolerância a falhas) ----
-    const freguesiasUrl='https://arcgis.aguasdoporto.pt/arcgis/rest/services/Porto_mais_permeavel/Porto_mais_permeavel/MapServer/7/query?where=1%3D1&outFields=*&f=geojson';
-    let labelLayer=L.layerGroup();
-    fetch(freguesiasUrl).then(r=>r.json()).then(geo=>{
-      const freguesias=L.geoJSON(geo,{ style:{ color:'#111', weight:1.5, fillColor:'#bfa06a', fillOpacity:0.06 }, onEachFeature:(feature,layer)=>{ const nome=feature.properties?.FREGUESIA||feature.properties?.NOME||'Freguesia'; layer.bindPopup(`<strong>${nome}</strong>`); } }).addTo(map);
-      labelLayer=L.layerGroup();
-      (geo.features||[]).forEach(feat=>{
-        const nome=feat.properties?.FREGUESIA||feat.properties?.NOME||'Freguesia';
-        const coords=(feat.geometry&&feat.geometry.coordinates)||[]; const flat=coords.flat(2);
-        let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
-        for(let i=0;i<flat.length;i+=2){ const x=flat[i], y=flat[i+1]; if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; }
-        const cx=(minY+maxY)/2, cy=(minX+maxX)/2; const label=L.marker([cx, cy],{ interactive:false, opacity:0.0 });
-        label.bindTooltip(nome,{ permanent:true, direction:'center', className:'freg-label' }).openTooltip(); labelLayer.addLayer(label);
-      });
-      labelLayer.addTo(map);
-    }).catch(err=>{ console.warn('Falha a carregar freguesias:', err); });
-
-    document.getElementById('labelsToggle').addEventListener('change',(e)=>{ if(e.target.value==='on'){ labelLayer.addTo(map);} else { map.removeLayer(labelLayer);} });
   </script>
 </body>
 </html>
