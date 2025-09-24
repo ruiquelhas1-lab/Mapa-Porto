@@ -4,28 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Garvetur Luxury Porto — Mapa do Porto (Freguesias + Pins)</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     :root {
       --brand-bg: #f5efe6;
-      --brand-accent: #bfa06a; /* dourado suave */
+      --brand-accent: #bfa06a;
       --brand-dark: #111111;
       --panel-bg: rgba(255,255,255,0.96);
       --shadow: 0 6px 24px rgba(0,0,0,.15);
       --radius: 14px;
     }
     html, body { height: 100%; margin: 0; background: var(--brand-bg); }
-    #map { height: 100%; width: 100%; }
+    #map { height: 100%; width: 100%; position: absolute; inset: 0; }
     .controls {
       position: absolute; top: 14px; left: 14px; z-index: 1000;
       background: var(--panel-bg); padding: 12px; border-radius: var(--radius);
       box-shadow: var(--shadow); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      max-width: 380px; border: 1px solid #eee;
+      max-width: 420px; border: 1px solid #eee;
     }
     .controls h3 { margin: 0 0 8px; font-size: 16px; color: var(--brand-dark); }
     .controls .sub { font-size: 12px; color:#555; margin-bottom: 6px; }
@@ -35,14 +30,14 @@
     .btn { background: var(--brand-dark); color:#fff; }
     .btn-secondary { background:#f3f3f3; color:#111; }
     .badge { display:inline-block; padding:2px 6px; border-radius:6px; background:var(--brand-accent); color:#fff; font-size:10px; margin-left:6px; }
-    .legend, .brand {
-      position:absolute; z-index:1000; background:var(--panel-bg); padding:10px; border-radius: var(--radius);
-      box-shadow: var(--shadow); font-size:12px; border:1px solid #eee;
+    .legend {
+      position:absolute; right:14px; bottom:14px; z-index:1000; background:var(--panel-bg);
+      padding:10px; border-radius: var(--radius); box-shadow: var(--shadow); font-size:12px; border:1px solid #eee;
     }
-    .legend { right:14px; bottom:14px; }
-    .brand { right:14px; top:14px; display:flex; align-items:center; gap:10px; }
-    .brand .dot { width:12px; height:12px; border-radius:50%; background: var(--brand-accent); border:1px solid rgba(0,0,0,.1); }
-    .brand h4 { margin:0; font-size:14px; color:var(--brand-dark); }
+    .toolbar {
+      position:absolute; right:14px; top:14px; z-index:1000; display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .toolbar button { background:var(--panel-bg); border:1px solid #eee; border-radius:10px; padding:8px 10px; box-shadow: var(--shadow); cursor:pointer; }
     .filters { display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
     .chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid #eee; border-radius:999px; padding:4px 8px; }
     .swatch { width:10px; height:10px; border-radius:50%; border:1px solid rgba(0,0,0,.2); }
@@ -50,14 +45,9 @@
   </style>
 </head>
 <body>
-  <div class="brand">
-    <div class="dot"></div>
-    <h4>Garvetur Luxury Porto — Mapa do Porto</h4>
-  </div>
-
   <div class="controls">
     <h3>Freguesias <span class="badge">Porto</span></h3>
-    <div class="sub">Adicionar pins, importar CSV/GeoJSON e filtrar por estado.</div>
+    <div class="sub">Adicionar pins, importar CSV/GeoJSON (aceita vírgulas e ponto e vírgula) e filtrar por estado.</div>
 
     <div class="filters">
       <label class="chip"><span class="swatch" style="background:#22a447"></span><input type="checkbox" id="fLic" checked> Licenciado</label>
@@ -81,7 +71,7 @@
     <button class="btn" id="enableAdd">Ativar modo “Adicionar Pin”</button>
     <button class="btn-secondary" id="disableAdd">Desativar</button>
 
-    <label style="margin-top:12px;">Importar pins (GeoJSON/CSV: name,notes,status,lat,lng)</label>
+    <label style="margin-top:12px;">Importar pins (GeoJSON ou CSV com colunas: name,notes,status,lat,lng)</label>
     <input type="file" id="fileInput" accept=".json,.geojson,.csv" />
     <button class="btn-secondary" id="clearPins">Limpar pins</button>
     <button class="btn" id="exportPins">Exportar pins (GeoJSON)</button>
@@ -93,32 +83,56 @@
     </select>
   </div>
 
+  <div class="toolbar">
+    <button id="fitBtn">Recentrar no conteúdo</button>
+    <button id="switchBase">Alternar base</button>
+  </div>
+
   <div id="map"></div>
 
   <div class="legend">
-    <strong>Fontes:</strong><br/> OpenStreetMap — Tiles<br/> Águas do Porto (ArcGIS GeoJSON) — Freguesias
+    <strong>Fontes:</strong><br/> OpenStreetMap — Tiles (com fallback)<br/> Águas do Porto (ArcGIS GeoJSON) — Freguesias
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    // Mapa base
-    const map = L.map('map', { preferCanvas: true }).setView([41.1496, -8.6109], 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 20,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Contribuidores do OpenStreetMap</a>'
-    }).addTo(map);
+    // Basemaps com fallback
+    const bases = [
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: '&copy; Contribuidores do OpenStreetMap'
+      }),
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20,
+        attribution: '&copy; OpenStreetMap & CARTO'
+      }),
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 19,
+        attribution: 'Esri, USGS, NOAA'
+      })
+    ];
+
+    const map = L.map('map', { preferCanvas: true, zoomControl: true }).setView([41.1496, -8.6109], 12);
+    let baseIdx = 0;
+    bases[baseIdx].addTo(map);
+
+    function nextBase() {
+      map.removeLayer(bases[baseIdx]);
+      baseIdx = (baseIdx + 1) % bases.length;
+      bases[baseIdx].addTo(map);
+    }
+
+    document.getElementById('switchBase').onclick = nextBase;
 
     // Grupo de pins
     const pins = L.featureGroup().addTo(map);
 
-    // Status -> cor
     const STATUS_COLORS = {
       licenciado: '#22a447',
       em_construcao: '#f39c12',
       concluido: '#2e86de'
     };
 
-    // Utilitário: criar ícone com cor (DivIcon SVG)
     function coloredIcon(color) {
       const svg = encodeURIComponent(`
         <svg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'>
@@ -126,15 +140,9 @@
           <circle cx='14' cy='14' r='5.5' fill='white' stroke='rgba(0,0,0,0.25)'/>
         </svg>
       `);
-      return L.icon({
-        iconUrl: 'data:image/svg+xml;utf8,' + svg,
-        iconSize: [28, 40],
-        iconAnchor: [14, 40],
-        popupAnchor: [0, -34]
-      });
+      return L.icon({ iconUrl: 'data:image/svg+xml;utf8,' + svg, iconSize: [28, 40], iconAnchor: [14, 40], popupAnchor: [0, -34] });
     }
 
-    // Estado de adição
     let addMode = false;
     const pinNameEl = document.getElementById('pinName');
     const pinNotesEl = document.getElementById('pinNotes');
@@ -143,7 +151,6 @@
     document.getElementById('enableAdd').onclick = () => { addMode = true; };
     document.getElementById('disableAdd').onclick = () => { addMode = false; };
 
-    // Filtros
     const fLic = document.getElementById('fLic');
     const fObra = document.getElementById('fObra');
     const fConc = document.getElementById('fConc');
@@ -158,23 +165,17 @@
     function refreshVisibility() {
       pins.eachLayer(l => {
         const s = l.feature?.properties?.status || l.options.status || 'em_construcao';
-        if (statusAllowed(s)) {
-          if (!map.hasLayer(l)) { l.addTo(map); }
-        } else {
-          if (map.hasLayer(l)) { map.removeLayer(l); }
-        }
+        if (statusAllowed(s)) { if (!map.hasLayer(l)) l.addTo(map); }
+        else { if (map.hasLayer(l)) map.removeLayer(l); }
       });
     }
-
     fLic.onchange = fObra.onchange = fConc.onchange = refreshVisibility;
 
-    // Criar marker com propriedades
     function createPin(latlng, {name='Empreendimento', notes='', status='em_construcao'} = {}) {
       const color = STATUS_COLORS[status] || STATUS_COLORS.em_construcao;
       const marker = L.marker(latlng, { draggable:true, icon: coloredIcon(color), status });
       marker.bindPopup(`<strong>${name}</strong><br>${notes}<br><small>Estado: ${status.replace('_',' ')}</small><br><small>${latlng.lat.toFixed(6)}, ${latlng.lng.toFixed(6)}</small>`);
       marker.on('dragend', () => marker.openPopup());
-      // Guardar metadados para export
       marker.feature = { type:'Feature', properties:{ name, notes, status }, geometry:{ type:'Point', coordinates:[latlng.lng, latlng.lat] } };
       pins.addLayer(marker);
       return marker;
@@ -190,7 +191,7 @@
       refreshVisibility();
     });
 
-    // Importar pins
+    // Importador tolerante (CSV , ; ou GeoJSON)
     document.getElementById('fileInput').addEventListener('change', (evt) => {
       const file = evt.target.files[0];
       if (!file) return;
@@ -199,19 +200,25 @@
         const text = e.target.result;
         try {
           if (file.name.toLowerCase().endsWith('.csv')) {
+            // detetar separador
+            const headerLine = text.split(/\r?\n/)[0] || '';
+            const sep = (headerLine.split(';').length > headerLine.split(',').length) ? ';' : ',';
             const rows = text.split(/\r?\n/).filter(r => r.trim().length);
-            const headers = rows.shift().split(',').map(h => h.trim().toLowerCase());
+            const headers = rows.shift().split(sep).map(h => h.trim().toLowerCase());
             const idx = (h) => headers.indexOf(h);
             const iName = idx('name'), iNotes = idx('notes'), iStatus = idx('status'), iLat = idx('lat'), iLng = idx('lng');
+            let count = 0;
             rows.forEach(r => {
-              const cols = r.split(',');
-              const lat = parseFloat(cols[iLat]);
-              const lng = parseFloat(cols[iLng]);
+              const cols = r.split(sep);
+              if (!cols.length) return;
+              const lat = parseFloat((cols[iLat]||'').replace(',', '.'));
+              const lng = parseFloat((cols[iLng]||'').replace(',', '.'));
               const name = (cols[iName]||'').trim() || 'Empreendimento';
               const notes = (cols[iNotes]||'').trim();
               const status = (cols[iStatus]||'em_construcao').trim();
-              if (!isNaN(lat) && !isNaN(lng)) createPin([lat, lng], {name, notes, status});
+              if (!isNaN(lat) && !isNaN(lng)) { createPin([lat, lng], {name, notes, status}); count++; }
             });
+            if (count === 0) alert('Nenhuma linha válida encontrada. Verifique as colunas: name,notes,status,lat,lng');
             if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding: [40,40] });
             refreshVisibility();
           } else {
@@ -226,66 +233,67 @@
             if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding: [40,40] });
             refreshVisibility();
           }
-        } catch(err) { alert('Erro a importar: ' + err.message); }
+        } catch(err) {
+          console.error(err);
+          alert('Erro a importar: ' + err.message);
+        }
       };
       reader.readAsText(file);
     });
 
     document.getElementById('clearPins').onclick = () => { pins.clearLayers(); };
 
-    // Exportar pins para GeoJSON
     document.getElementById('exportPins').onclick = () => {
       const features = [];
-      pins.eachLayer(l => {
-        if (l.feature) features.push(l.feature);
-      });
+      pins.eachLayer(l => { if (l.feature) features.push(l.feature); });
       const fc = { type:'FeatureCollection', features };
       const blob = new Blob([JSON.stringify(fc, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'pins-porto.geojson'; a.click();
+      const a = document.createElement('a'); a.href = url; a.download = 'pins-porto.geojson'; a.click();
       URL.revokeObjectURL(url);
     };
 
-    // Freguesias (ArcGIS Águas do Porto)
+    // Freguesias (com tolerância a falhas)
     const freguesiasUrl = 'https://arcgis.aguasdoporto.pt/arcgis/rest/services/Porto_mais_permeavel/Porto_mais_permeavel/MapServer/7/query?where=1%3D1&outFields=*&f=geojson';
     let labelLayer = L.layerGroup();
 
-    fetch(freguesiasUrl)
-      .then(r => r.json())
-      .then(geo => {
-        const freguesias = L.geoJSON(geo, {
-          style: { color: '#111', weight: 1.5, fillColor: '#bfa06a', fillOpacity: 0.06 },
-          onEachFeature: (feature, layer) => {
-            const nome = feature.properties?.FREGUESIA || feature.properties?.NOME || 'Freguesia';
-            layer.bindPopup(`<strong>${nome}</strong>`);
-          }
-        }).addTo(map);
+    fetch(freguesiasUrl).then(r => r.json()).then(geo => {
+      const freguesias = L.geoJSON(geo, {
+        style: { color: '#111', weight: 1.5, fillColor: '#bfa06a', fillOpacity: 0.06 },
+        onEachFeature: (feature, layer) => {
+          const nome = feature.properties?.FREGUESIA || feature.properties?.NOME || 'Freguesia';
+          layer.bindPopup(`<strong>${nome}</strong>`);
+        }
+      }).addTo(map);
 
-        // Rótulos (centroides aproximados via bbox)
-        labelLayer = L.layerGroup();
-        geo.features.forEach(feat => {
-          const nome = feat.properties?.FREGUESIA || feat.properties?.NOME || 'Freguesia';
-          const coords = feat.geometry.coordinates.flat(2);
-          let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
-          for (let i=0;i<coords.length;i+=2){
-            const x=coords[i], y=coords[i+1];
-            if (x<minX) minX=x; if (x>maxX) maxX=x; if (y<minY) minY=y; if (y>maxY) maxY=y;
-          }
-          const cx=(minY+maxY)/2, cy=(minX+maxX)/2; // GeoJSON: [lng, lat]
-          const label = L.marker([cx, cy], { interactive:false, opacity:0.0 });
-          label.bindTooltip(nome, { permanent:true, direction:'center', className:'freg-label' }).openTooltip();
-          labelLayer.addLayer(label);
-        });
-        labelLayer.addTo(map);
-        map.fitBounds(freguesias.getBounds(), { padding: [20,20] });
-      })
-      .catch(err => console.error('Falha ao carregar freguesias:', err));
+      // Rótulos (centroides aproximados via bbox)
+      labelLayer = L.layerGroup();
+      geo.features.forEach(feat => {
+        const nome = feat.properties?.FREGUESIA || feat.properties?.NOME || 'Freguesia';
+        const coords = feat.geometry.coordinates.flat(2);
+        let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+        for (let i=0;i<coords.length;i+=2){
+          const x=coords[i], y=coords[i+1];
+          if (x<minX) minX=x; if (x>maxX) maxX=x; if (y<minY) minY=y; if (y>maxY) maxY=y;
+        }
+        const cx=(minY+maxY)/2, cy=(minX+maxX)/2; // GeoJSON: [lng, lat]
+        const label = L.marker([cx, cy], { interactive:false, opacity:0.0 });
+        label.bindTooltip(nome, { permanent:true, direction:'center', className:'freg-label' }).openTooltip();
+        labelLayer.addLayer(label);
+      });
+      labelLayer.addTo(map);
+    }).catch(err => {
+      console.warn('Falha a carregar freguesias:', err);
+    });
 
-    // Alternar rótulos
     document.getElementById('labelsToggle').addEventListener('change', (e) => {
       if (e.target.value === 'on') { labelLayer.addTo(map); } else { map.removeLayer(labelLayer); }
     });
+
+    document.getElementById('fitBtn').onclick = () => {
+      if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding: [40,40] });
+      else map.setView([41.1496, -8.6109], 12);
+    };
   </script>
 </body>
 </html>
