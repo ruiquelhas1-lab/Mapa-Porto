@@ -1,3 +1,4 @@
-name,notes,lat,lng
-Gramoínhos Living,Em construção; T2/T3,41.112345,-8.600123
-Exemplo 2,Licenciado; T1/T2,41.160001,-8.620001
+name,notes,status,lat,lng
+Gramoínhos Living,Em construção; T2/T3,em_construcao,41.112345,-8.600123
+Projeto Exemplo,Licenciado; T1/T2,licenciado,41.160001,-8.620001
+Residencial Atlântico,Concluído; Entregue 2024,concluido,41.145000,-8.610000

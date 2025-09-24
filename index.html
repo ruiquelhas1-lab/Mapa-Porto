@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mapa do Porto – Freguesias + Pins</title>
+  <title>Garvetur Luxury Porto — Mapa do Porto (Freguesias + Pins)</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -11,90 +11,186 @@
     crossorigin=""
   />
   <style>
-    html, body { height: 100%; margin: 0; }
+    :root {
+      --brand-bg: #f5efe6;
+      --brand-accent: #bfa06a; /* dourado suave */
+      --brand-dark: #111111;
+      --panel-bg: rgba(255,255,255,0.96);
+      --shadow: 0 6px 24px rgba(0,0,0,.15);
+      --radius: 14px;
+    }
+    html, body { height: 100%; margin: 0; background: var(--brand-bg); }
     #map { height: 100%; width: 100%; }
     .controls {
-      position: absolute; top: 10px; left: 10px; z-index: 1000;
-      background: rgba(255,255,255,0.95); padding: 10px; border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      max-width: 360px;
+      position: absolute; top: 14px; left: 14px; z-index: 1000;
+      background: var(--panel-bg); padding: 12px; border-radius: var(--radius);
+      box-shadow: var(--shadow); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      max-width: 380px; border: 1px solid #eee;
     }
-    .controls h3 { margin: 0 0 6px; font-size: 16px; }
+    .controls h3 { margin: 0 0 8px; font-size: 16px; color: var(--brand-dark); }
+    .controls .sub { font-size: 12px; color:#555; margin-bottom: 6px; }
     .controls label { display: block; font-size: 12px; margin-top: 8px; }
     .controls input, .controls textarea, .controls select { width: 100%; padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; font-size: 12px; }
-    .controls button { margin-top: 8px; padding: 8px 10px; border: 0; border-radius: 8px; cursor: pointer; }
-    .btn { background:#111; color:#fff; }
-    .btn-secondary { background:#f0f0f0; color:#111; }
-    .badge { display:inline-block; padding:2px 6px; border-radius:6px; background:#111; color:#fff; font-size:10px; margin-left:6px; }
-    .legend { position:absolute; right:10px; bottom:10px; z-index:1000; background:rgba(255,255,255,0.95); padding:10px; border-radius:10px; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size:12px; }
+    .controls button { margin-top: 8px; padding: 8px 10px; border: 0; border-radius: 10px; cursor: pointer; }
+    .btn { background: var(--brand-dark); color:#fff; }
+    .btn-secondary { background:#f3f3f3; color:#111; }
+    .badge { display:inline-block; padding:2px 6px; border-radius:6px; background:var(--brand-accent); color:#fff; font-size:10px; margin-left:6px; }
+    .legend, .brand {
+      position:absolute; z-index:1000; background:var(--panel-bg); padding:10px; border-radius: var(--radius);
+      box-shadow: var(--shadow); font-size:12px; border:1px solid #eee;
+    }
+    .legend { right:14px; bottom:14px; }
+    .brand { right:14px; top:14px; display:flex; align-items:center; gap:10px; }
+    .brand .dot { width:12px; height:12px; border-radius:50%; background: var(--brand-accent); border:1px solid rgba(0,0,0,.1); }
+    .brand h4 { margin:0; font-size:14px; color:var(--brand-dark); }
+    .filters { display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
+    .chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid #eee; border-radius:999px; padding:4px 8px; }
+    .swatch { width:10px; height:10px; border-radius:50%; border:1px solid rgba(0,0,0,.2); }
     .freg-label { background: rgba(255,255,255,0.85); border-radius: 6px; padding: 2px 6px; border: 1px solid #ddd; font-weight: 600; }
   </style>
 </head>
 <body>
-  <div class="controls">
-    <h3>Mapa do Porto <span class="badge">Freguesias</span></h3>
-    <div>
-      <label>Adicionar Pin (clique no mapa e preencha):</label>
-      <label>Nome do empreendimento</label>
-      <input type="text" id="pinName" placeholder="Ex.: Gramoínhos Living" />
-      <label>Notas / Fase</label>
-      <textarea id="pinNotes" rows="2" placeholder="Em construção; T2/T3; promotor X"></textarea>
-      <button class="btn" id="enableAdd">Ativar modo &quot;Adicionar Pin&quot;</button>
-      <button class="btn-secondary" id="disableAdd">Desativar</button>
-    </div>
-    <div>
-      <label>Importar pins (GeoJSON/CSV)</label>
-      <input type="file" id="fileInput" accept=".json,.geojson,.csv" />
-      <button class="btn-secondary" id="clearPins">Limpar pins</button>
-      <button class="btn" id="exportPins">Exportar pins (GeoJSON)</button>
-    </div>
-    <div>
-      <label>Mostrar rótulos das freguesias</label>
-      <select id="labelsToggle">
-        <option value="on">Sim</option>
-        <option value="off">Não</option>
-      </select>
-    </div>
+  <div class="brand">
+    <div class="dot"></div>
+    <h4>Garvetur Luxury Porto — Mapa do Porto</h4>
   </div>
+
+  <div class="controls">
+    <h3>Freguesias <span class="badge">Porto</span></h3>
+    <div class="sub">Adicionar pins, importar CSV/GeoJSON e filtrar por estado.</div>
+
+    <div class="filters">
+      <label class="chip"><span class="swatch" style="background:#22a447"></span><input type="checkbox" id="fLic" checked> Licenciado</label>
+      <label class="chip"><span class="swatch" style="background:#f39c12"></span><input type="checkbox" id="fObra" checked> Em construção</label>
+      <label class="chip"><span class="swatch" style="background:#2e86de"></span><input type="checkbox" id="fConc" checked> Concluído</label>
+    </div>
+
+    <label>Nome do empreendimento</label>
+    <input type="text" id="pinName" placeholder="Ex.: Gramoínhos Living" />
+
+    <label>Notas / Fase</label>
+    <textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X; data de entrega"></textarea>
+
+    <label>Estado</label>
+    <select id="pinStatus">
+      <option value="licenciado">Licenciado</option>
+      <option value="em_construcao" selected>Em construção</option>
+      <option value="concluido">Concluído</option>
+    </select>
+
+    <button class="btn" id="enableAdd">Ativar modo “Adicionar Pin”</button>
+    <button class="btn-secondary" id="disableAdd">Desativar</button>
+
+    <label style="margin-top:12px;">Importar pins (GeoJSON/CSV: name,notes,status,lat,lng)</label>
+    <input type="file" id="fileInput" accept=".json,.geojson,.csv" />
+    <button class="btn-secondary" id="clearPins">Limpar pins</button>
+    <button class="btn" id="exportPins">Exportar pins (GeoJSON)</button>
+
+    <label style="margin-top:12px;">Mostrar rótulos das freguesias</label>
+    <select id="labelsToggle">
+      <option value="on">Sim</option>
+      <option value="off">Não</option>
+    </select>
+  </div>
+
   <div id="map"></div>
+
   <div class="legend">
-    <strong>Fontes:</strong><br/> OpenStreetMap; Limites freguesias via Águas do Porto (ArcGIS GeoJSON)
+    <strong>Fontes:</strong><br/> OpenStreetMap — Tiles<br/> Águas do Porto (ArcGIS GeoJSON) — Freguesias
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    // Inicialização do mapa centrado no Porto
+    // Mapa base
     const map = L.map('map', { preferCanvas: true }).setView([41.1496, -8.6109], 12);
-
-    // Camada base OSM
-    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 20,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Contribuidores do OpenStreetMap</a>'
     }).addTo(map);
 
-    // Grupo para pins
+    // Grupo de pins
     const pins = L.featureGroup().addTo(map);
 
-    // Estado de adição de pins
+    // Status -> cor
+    const STATUS_COLORS = {
+      licenciado: '#22a447',
+      em_construcao: '#f39c12',
+      concluido: '#2e86de'
+    };
+
+    // Utilitário: criar ícone com cor (DivIcon SVG)
+    function coloredIcon(color) {
+      const svg = encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'>
+          <path d='M14 0C6.268 0 0 6.268 0 14c0 9.333 12.25 24.667 13.016 25.641a1.25 1.25 0 0 0 1.968 0C15.75 38.667 28 23.333 28 14 28 6.268 21.732 0 14 0z' fill='${color}' stroke='rgba(0,0,0,0.35)' stroke-width='1'/>
+          <circle cx='14' cy='14' r='5.5' fill='white' stroke='rgba(0,0,0,0.25)'/>
+        </svg>
+      `);
+      return L.icon({
+        iconUrl: 'data:image/svg+xml;utf8,' + svg,
+        iconSize: [28, 40],
+        iconAnchor: [14, 40],
+        popupAnchor: [0, -34]
+      });
+    }
+
+    // Estado de adição
     let addMode = false;
     const pinNameEl = document.getElementById('pinName');
     const pinNotesEl = document.getElementById('pinNotes');
+    const pinStatusEl = document.getElementById('pinStatus');
 
     document.getElementById('enableAdd').onclick = () => { addMode = true; };
     document.getElementById('disableAdd').onclick = () => { addMode = false; };
+
+    // Filtros
+    const fLic = document.getElementById('fLic');
+    const fObra = document.getElementById('fObra');
+    const fConc = document.getElementById('fConc');
+
+    function statusAllowed(s) {
+      if (s === 'licenciado') return fLic.checked;
+      if (s === 'em_construcao') return fObra.checked;
+      if (s === 'concluido') return fConc.checked;
+      return true;
+    }
+
+    function refreshVisibility() {
+      pins.eachLayer(l => {
+        const s = l.feature?.properties?.status || l.options.status || 'em_construcao';
+        if (statusAllowed(s)) {
+          if (!map.hasLayer(l)) { l.addTo(map); }
+        } else {
+          if (map.hasLayer(l)) { map.removeLayer(l); }
+        }
+      });
+    }
+
+    fLic.onchange = fObra.onchange = fConc.onchange = refreshVisibility;
+
+    // Criar marker com propriedades
+    function createPin(latlng, {name='Empreendimento', notes='', status='em_construcao'} = {}) {
+      const color = STATUS_COLORS[status] || STATUS_COLORS.em_construcao;
+      const marker = L.marker(latlng, { draggable:true, icon: coloredIcon(color), status });
+      marker.bindPopup(`<strong>${name}</strong><br>${notes}<br><small>Estado: ${status.replace('_',' ')}</small><br><small>${latlng.lat.toFixed(6)}, ${latlng.lng.toFixed(6)}</small>`);
+      marker.on('dragend', () => marker.openPopup());
+      // Guardar metadados para export
+      marker.feature = { type:'Feature', properties:{ name, notes, status }, geometry:{ type:'Point', coordinates:[latlng.lng, latlng.lat] } };
+      pins.addLayer(marker);
+      return marker;
+    }
 
     map.on('click', (e) => {
       if (!addMode) return;
       const name = pinNameEl.value.trim() || 'Empreendimento';
       const notes = pinNotesEl.value.trim() || '';
-      const marker = L.marker(e.latlng, { draggable: true });
-      marker.bindPopup(`<strong>${name}</strong><br>${notes}<br><small>${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}</small>`);
-      marker.on('dragend', () => marker.openPopup());
-      pins.addLayer(marker);
-      marker.openPopup();
+      const status = pinStatusEl.value;
+      const m = createPin(e.latlng, {name, notes, status});
+      m.openPopup();
+      refreshVisibility();
     });
 
-    // Importar pins (GeoJSON ou CSV com colunas: name,notes,lat,lng)
+    // Importar pins
     document.getElementById('fileInput').addEventListener('change', (evt) => {
       const file = evt.target.files[0];
       if (!file) return;
@@ -105,29 +201,30 @@
           if (file.name.toLowerCase().endsWith('.csv')) {
             const rows = text.split(/\r?\n/).filter(r => r.trim().length);
             const headers = rows.shift().split(',').map(h => h.trim().toLowerCase());
-            const iName = headers.indexOf('name');
-            const iNotes = headers.indexOf('notes');
-            const iLat = headers.indexOf('lat');
-            const iLng = headers.indexOf('lng');
+            const idx = (h) => headers.indexOf(h);
+            const iName = idx('name'), iNotes = idx('notes'), iStatus = idx('status'), iLat = idx('lat'), iLng = idx('lng');
             rows.forEach(r => {
               const cols = r.split(',');
               const lat = parseFloat(cols[iLat]);
               const lng = parseFloat(cols[iLng]);
-              const name = cols[iName] || 'Empreendimento';
-              const notes = cols[iNotes] || '';
-              if (!isNaN(lat) && !isNaN(lng)) {
-                const m = L.marker([lat, lng], { draggable:true }).bindPopup(`<strong>${name}</strong><br>${notes}`);
-                pins.addLayer(m);
-              }
+              const name = (cols[iName]||'').trim() || 'Empreendimento';
+              const notes = (cols[iNotes]||'').trim();
+              const status = (cols[iStatus]||'em_construcao').trim();
+              if (!isNaN(lat) && !isNaN(lng)) createPin([lat, lng], {name, notes, status});
             });
             if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding: [40,40] });
+            refreshVisibility();
           } else {
             const geo = JSON.parse(text);
-            const gj = L.geoJSON(geo, {
-              pointToLayer: (f, latlng) => L.marker(latlng, { draggable: true }).bindPopup(`<strong>${f.properties?.name || 'Empreendimento'}</strong><br>${f.properties?.notes || ''}`)
+            L.geoJSON(geo, {
+              pointToLayer: (f, latlng) => createPin(latlng, {
+                name: f.properties?.name || 'Empreendimento',
+                notes: f.properties?.notes || '',
+                status: f.properties?.status || 'em_construcao'
+              })
             });
-            pins.addLayer(gj);
             if (pins.getLayers().length) map.fitBounds(pins.getBounds(), { padding: [40,40] });
+            refreshVisibility();
           }
         } catch(err) { alert('Erro a importar: ' + err.message); }
       };
@@ -138,7 +235,11 @@
 
     // Exportar pins para GeoJSON
     document.getElementById('exportPins').onclick = () => {
-      const fc = pins.toGeoJSON();
+      const features = [];
+      pins.eachLayer(l => {
+        if (l.feature) features.push(l.feature);
+      });
+      const fc = { type:'FeatureCollection', features };
       const blob = new Blob([JSON.stringify(fc, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -146,25 +247,22 @@
       URL.revokeObjectURL(url);
     };
 
-    // Carregar limites das freguesias (ArcGIS Águas do Porto) em GeoJSON
+    // Freguesias (ArcGIS Águas do Porto)
     const freguesiasUrl = 'https://arcgis.aguasdoporto.pt/arcgis/rest/services/Porto_mais_permeavel/Porto_mais_permeavel/MapServer/7/query?where=1%3D1&outFields=*&f=geojson';
-
     let labelLayer = L.layerGroup();
 
     fetch(freguesiasUrl)
       .then(r => r.json())
       .then(geo => {
         const freguesias = L.geoJSON(geo, {
-          style: {
-            color: '#111', weight: 1.5, fillColor: '#4CC9F0', fillOpacity: 0.08
-          },
+          style: { color: '#111', weight: 1.5, fillColor: '#bfa06a', fillOpacity: 0.06 },
           onEachFeature: (feature, layer) => {
             const nome = feature.properties?.FREGUESIA || feature.properties?.NOME || 'Freguesia';
             layer.bindPopup(`<strong>${nome}</strong>`);
           }
         }).addTo(map);
 
-        // Rótulos (centroides aproximados por bbox)
+        // Rótulos (centroides aproximados via bbox)
         labelLayer = L.layerGroup();
         geo.features.forEach(feat => {
           const nome = feat.properties?.FREGUESIA || feat.properties?.NOME || 'Freguesia';
@@ -180,7 +278,6 @@
           labelLayer.addLayer(label);
         });
         labelLayer.addTo(map);
-
         map.fitBounds(freguesias.getBounds(), { padding: [20,20] });
       })
       .catch(err => console.error('Falha ao carregar freguesias:', err));
