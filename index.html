@@ -3,10 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Garvetur Luxury Porto — Mapa v4.4</title>
+  <title>Garvetur Luxury Porto — Mapa v4.5</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
-    :root { --panel:rgba(255,255,255,0.78); --panelHover:rgba(255,255,255,0.92); --shadow:0 6px 24px rgba(0,0,0,.12); --radius:12px; --brand:#bfa06a; --dark:#111; }
+    :root {
+      --panel: rgba(255,255,255,0.65);
+      --panelHover: rgba(255,255,255,0.80);
+      --shadow: 0 6px 24px rgba(0,0,0,.12);
+      --radius: 12px;
+      --brand: #bfa06a;
+      --dark: #111;
+    }
     html, body { height:100%; margin:0; background:#f5efe6 }
     #map { position:absolute; inset:0; height:100%; width:100%; }
     .controls {
@@ -15,16 +22,31 @@
       box-shadow:var(--shadow); padding:12px;
       font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
       max-width:700px; backdrop-filter: blur(6px);
-      transition: background .15s ease;
+      transition: background .15s ease, max-height .2s ease, padding .2s ease;
     }
     .controls:hover { background: var(--panelHover); }
+    .controls.collapsed { padding:10px 12px; max-width:420px; }
     .controls strong { color:var(--dark) }
     .controls label { display:block; font-size:12px; margin-top:8px }
-    .controls input, .controls select, .controls textarea { width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px; background:rgba(255,255,255,0.9) }
+    .controls input, .controls select, .controls textarea {
+      width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px;
+      background:rgba(255,255,255,0.92)
+    }
     .controls button { margin-top:8px; padding:8px 10px; border:0; border-radius:10px; cursor:pointer; background:#111; color:#fff }
+    .controls .header {
+      display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px;
+    }
+    .controls .header .title { font-weight:700; }
+    .controls .header .actions { display:flex; gap:6px; }
+    .btn-ghost {
+      background: rgba(0,0,0,0.45); color:#fff; border:0; border-radius:10px;
+      padding:6px 8px; cursor:pointer; font-size:12px
+    }
+    .btn-ghost:hover { background: rgba(0,0,0,0.6); }
+    .hidden { display:none !important; }
     .toolbar { position:absolute; right:12px; top:12px; z-index:1000; display:flex; gap:8px; flex-wrap:wrap }
-    .toolbar button { background:rgba(255,255,255,0.85); border:1px solid #eee; border-radius:10px; padding:8px 10px; box-shadow:0 6px 24px rgba(0,0,0,.12); cursor:pointer; backdrop-filter: blur(4px) }
-    .legend { position:absolute; right:12px; bottom:12px; z-index:1000; background:rgba(255,255,255,0.85); border:1px solid #eee; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.12); padding:10px; font-family:system-ui; font-size:12px; backdrop-filter: blur(4px) }
+    .toolbar button { background:rgba(255,255,255,0.65); border:1px solid #eee; border-radius:10px; padding:8px 10px; box-shadow:0 6px 24px rgba(0,0,0,.12); cursor:pointer; backdrop-filter: blur(4px) }
+    .legend { position:absolute; right:12px; bottom:12px; z-index:1000; background:rgba(255,255,255,0.65); border:1px solid #eee; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.12); padding:10px; font-family:system-ui; font-size:12px; backdrop-filter: blur(4px) }
     .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid #eee; border-radius:999px; padding:4px 8px; margin-right:6px; background:#fff; cursor:pointer; user-select:none }
     .chip input { margin-right:6px }
     .dot { width:10px; height:10px; border-radius:50% }
@@ -37,67 +59,75 @@
   </style>
 </head>
 <body>
-  <div class="controls">
-    <strong>Mapa do Porto</strong> — Importa <b>XLSX</b>, <b>CSV</b> (vírgula ou ;) e <b>GeoJSON</b>.<br/>
-    <small>Pesquisa por <strong>Nome</strong>, filtro por <strong>AnoConclusao</strong> e <strong>filtros de Estado</strong>. Etiquetas fixas mostram <em>Nome + Notas + Estado + Ano</em>.</small>
-
-    <div class="row" style="margin-top:8px">
-      <div style="flex:2">
-        <label>Pesquisar empreendimento (Nome)</label>
-        <input id="searchName" list="namesList" placeholder="Escreva e selecione — ex.: Menéres 777" />
-        <datalist id="namesList"></datalist>
-      </div>
-      <div style="flex:1">
-        <label>Filtrar por AnoConclusao</label>
-        <select id="yearFilter">
-          <option value="">— Todos —</option>
-        </select>
-      </div>
-      <div style="flex:0">
-        <button id="btnSearch">Ir</button>
+  <div class="controls" id="controls">
+    <div class="header">
+      <div class="title">Mapa do Porto</div>
+      <div class="actions">
+        <button id="togglePanel" class="btn-ghost" title="Minimizar/Maximizar">▁</button>
       </div>
     </div>
 
-    <div class="status-bar" id="statusBar">
-      <label class="chip"><input type="checkbox" value="em_construcao" checked><span class="dot" style="background:#f39c12"></span> Em construção</label>
-      <label class="chip"><input type="checkbox" value="em_licenciamento" checked><span class="dot" style="background:#9b59b6"></span> Em licenciamento</label>
-      <label class="chip"><input type="checkbox" value="licenciado" checked><span class="dot" style="background:#22a447"></span> Licenciado</label>
-      <label class="chip"><input type="checkbox" value="concluido" checked><span class="dot" style="background:#2e86de"></span> Concluído</label>
-    </div>
+    <div id="controlsBody">
+      <small>Importa <b>XLSX</b>, <b>CSV</b> (vírgula ou ;) e <b>GeoJSON</b>. Pesquisa por <strong>Nome</strong>, filtro por <strong>AnoConclusao</strong> e <strong>filtros de Estado</strong>. Etiquetas fixas mostram <em>Nome + Notas + Estado + Ano</em>.</small>
 
-    <div class="stats" id="stats">0 empreendimentos visíveis.</div>
-
-    <label>Importar ficheiro (XLSX / CSV / GeoJSON)</label>
-    <input type="file" id="fileInput" accept=".xlsx,.xls,.csv,.geojson,.json" />
-
-    <div class="row">
-      <div>
-        <label>Estado (para adicionar manualmente)</label>
-        <select id="pinStatus">
-          <option value="licenciado">Licenciado</option>
-          <option value="em_licenciamento">Em licenciamento</option>
-          <option value="em_construcao" selected>Em construção</option>
-          <option value="concluido">Concluído</option>
-        </select>
+      <div class="row" style="margin-top:8px">
+        <div style="flex:2">
+          <label>Pesquisar empreendimento (Nome)</label>
+          <input id="searchName" list="namesList" placeholder="Escreva e selecione — ex.: Menéres 777" />
+          <datalist id="namesList"></datalist>
+        </div>
+        <div style="flex:1">
+          <label>Filtrar por AnoConclusao</label>
+          <select id="yearFilter">
+            <option value="">— Todos —</option>
+          </select>
+        </div>
+        <div style="flex:0">
+          <button id="btnSearch">Ir</button>
+        </div>
       </div>
-      <div>
-        <label>Nome</label><input id="pinName" placeholder="Ex.: Empreendimento" />
+
+      <div class="status-bar" id="statusBar">
+        <label class="chip"><input type="checkbox" value="em_construcao" checked><span class="dot" style="background:#f39c12"></span> Em construção</label>
+        <label class="chip"><input type="checkbox" value="em_licenciamento" checked><span class="dot" style="background:#9b59b6"></span> Em licenciamento</label>
+        <label class="chip"><input type="checkbox" value="licenciado" checked><span class="dot" style="background:#22a447"></span> Licenciado</label>
+        <label class="chip"><input type="checkbox" value="concluido" checked><span class="dot" style="background:#2e86de"></span> Concluído</label>
       </div>
-    </div>
-    <label>Notas</label><textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X"></textarea>
-    <div class="row">
-      <div><label>AnoConclusao</label><input id="pinYear" type="text" placeholder="2026 ou '2026 (previsto)'" /></div>
-      <div><label>Link (URL)</label><input id="pinLink" placeholder="https://..." /></div>
-      <div><label>TabelaVendas (URL PDF)</label><input id="pinPDF" placeholder="https://.../tabela.pdf" /></div>
-    </div>
 
-    <div class="row">
-      <button id="enableAdd">Ativar modo “Adicionar Pin”</button>
-      <button id="clearPins" style="background:#f3f3f3;color:#111">Limpar pins</button>
-    </div>
+      <div class="stats" id="stats">0 empreendimentos visíveis.</div>
 
-    <label>Mostrar rótulos de freguesia</label>
-    <select id="labelsToggle"><option value="on">Sim</option><option value="off">Não</option></select>
+      <label>Importar ficheiro (XLSX / CSV / GeoJSON)</label>
+      <input type="file" id="fileInput" accept=".xlsx,.xls,.csv,.geojson,.json" />
+
+      <div class="row">
+        <div>
+          <label>Estado (para adicionar manualmente)</label>
+          <select id="pinStatus">
+            <option value="licenciado">Licenciado</option>
+            <option value="em_licenciamento">Em licenciamento</option>
+            <option value="em_construcao" selected>Em construção</option>
+            <option value="concluido">Concluído</option>
+          </select>
+        </div>
+        <div>
+          <label>Nome</label><input id="pinName" placeholder="Ex.: Empreendimento" />
+        </div>
+      </div>
+      <label>Notas</label><textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X"></textarea>
+      <div class="row">
+        <div><label>AnoConclusao</label><input id="pinYear" type="text" placeholder="2026 ou '2026 (previsto)'" /></div>
+        <div><label>Link (URL)</label><input id="pinLink" placeholder="https://..." /></div>
+        <div><label>TabelaVendas (URL PDF)</label><input id="pinPDF" placeholder="https://.../tabela.pdf" /></div>
+      </div>
+
+      <div class="row">
+        <button id="enableAdd">Ativar modo “Adicionar Pin”</button>
+        <button id="clearPins" style="background:#f3f3f3;color:#111">Limpar pins</button>
+      </div>
+
+      <label>Mostrar rótulos de freguesia</label>
+      <select id="labelsToggle"><option value="on">Sim</option><option value="off">Não</option></select>
+    </div>
   </div>
 
   <div class="toolbar">
@@ -117,6 +147,33 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script>
+    // ===== Botão minimizar/maximizar =====
+    (function(){
+      const controls = document.getElementById('controls');
+      const body = document.getElementById('controlsBody');
+      const btn = document.getElementById('togglePanel');
+      let collapsed = false;
+      function setState(state){
+        collapsed = state;
+        if(collapsed){
+          controls.classList.add('collapsed');
+          body.classList.add('hidden');
+          btn.textContent = '▣'; // maximizar
+          btn.title = 'Maximizar painel';
+        } else {
+          controls.classList.remove('collapsed');
+          body.classList.remove('hidden');
+          btn.textContent = '▁'; // minimizar
+          btn.title = 'Minimizar painel';
+        }
+      }
+      btn.addEventListener('click', ()=> setState(!collapsed));
+      // Estado inicial: expandido
+      setState(false);
+    })();
+  </script>
+
   <script>
     // ===== Helpers =====
     function normalizeKey(k){
@@ -319,8 +376,8 @@
         if(!json.length) continue;
         const hdrRaw = Object.keys(json[0]);
         const hdrMap = new Map(hdrRaw.map(h=>[normalizeKey(h), h]));
-        const hasLat = KEY_ALIASES.lat.some(k=>hdrMap.has(normalizeKey(k)));
-        const hasLng = KEY_ALIASES.lng.some(k=>hdrMap.has(normalizeKey(k)));
+        const hasLat = ['lat','latitude','y'].some(k=>hdrMap.has(normalizeKey(k)));
+        const hasLng = ['lng','lon','long','longitude','x'].some(k=>hdrMap.has(normalizeKey(k)));
         if(!(hasLat && hasLng)) continue;
         json.forEach(row=>{
           const mapNorm = new Map(Object.keys(row).map(k=>[normalizeKey(k), row[k]]));
@@ -399,7 +456,7 @@
       (geo.features||[]).forEach(feat=>{
         const nome=feat.properties?.FREGUESIA||feat.properties?.NOME||'Freguesia';
         const coords=(feat.geometry&&feat.geometry.coordinates)||[]; const flat=coords.flat(2);
-        let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+        let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=Infinity*-1;
         for(let i=0;i<flat.length;i+=2){ const x=flat[i], y=flat[i+1]; if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; }
         const cx=(minY+maxY)/2, cy=(minX+maxX)/2; const label=L.marker([cx, cy],{ interactive:false, opacity:0.0 });
         label.bindTooltip(nome,{ permanent:true, direction:'center', className:'freg-label' }).openTooltip(); labelLayer.addLayer(label);
