@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Garvetur Luxury Porto — Mapa v4.1</title>
+  <title>Garvetur Luxury Porto — Mapa v4.2</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
     :root { --panel:#ffffff; --shadow:0 6px 24px rgba(0,0,0,.12); --radius:12px; --brand:#bfa06a; --dark:#111; }
     html, body { height:100%; margin:0; background:#f5efe6 }
     #map { position:absolute; inset:0; height:100%; width:100%; }
-    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:var(--panel); padding:12px; border-radius:var(--radius); box-shadow:var(--shadow); font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width:640px; border:1px solid #eee }
+    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:var(--panel); padding:12px; border-radius:var(--radius); box-shadow:var(--shadow); font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width:680px; border:1px solid #eee }
     .controls strong { color:var(--dark) }
     .controls label { display:block; font-size:12px; margin-top:8px }
     .controls input, .controls select, .controls textarea { width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px }
@@ -25,6 +25,7 @@
     .row { display:flex; gap:8px; align-items:center }
     .row > * { flex:1 }
     .status-bar { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+    .stats { font-size:12px; color:#333; margin-top:6px }
   </style>
 </head>
 <body>
@@ -55,6 +56,8 @@
       <label class="chip"><input type="checkbox" value="licenciado" checked><span class="dot" style="background:#22a447"></span> Licenciado</label>
       <label class="chip"><input type="checkbox" value="concluido" checked><span class="dot" style="background:#2e86de"></span> Concluído</label>
     </div>
+
+    <div class="stats" id="stats">0 empreendimentos visíveis.</div>
 
     <label>Importar ficheiro (XLSX / CSV / GeoJSON)</label>
     <input type="file" id="fileInput" accept=".xlsx,.xls,.csv,.geojson,.json" />
@@ -107,6 +110,48 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script>
+    // ===== Helpers de normalização =====
+    function normalizeKey(k){
+      if(k==null) return '';
+      return k.toString().toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove acentos
+        .replace(/[^a-z0-9]+/g,'') // remove espaços/pontuação
+        ;
+    }
+    const KEY_ALIASES = {
+      name: ['name','nome','empreendimento','titulo','título'],
+      notes: ['notes','notas','descricao','descrição','observacoes','observações'],
+      status: ['status','estado','fase'],
+      lat: ['lat','latitude','y'],
+      lng: ['lng','lon','long','longitude','x'],
+      ano: ['anoconclusao','ano','anoconclusao','ano_conclusao','conclusao','anodeconclusao','anoconclusão']
+    };
+    function aliasHit(nk, target){ // nk: normalized key map; target: canonical ('name','lat',...)
+      const alts = KEY_ALIASES[target] || [target];
+      for(const a of alts){
+        const na = normalizeKey(a);
+        if(nk.has(na)) return nk.get(na);
+      }
+      return null;
+    }
+    function normalizeStatus(raw){
+      const s = (raw||'').toString().toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .replace(/\s+/g,'_');
+      if(!s) return 'em_construcao';
+      if(s.includes('licenciament')) return 'em_licenciamento';
+      if(s.includes('construc')) return 'em_construcao';
+      if(s.includes('conclu')) return 'concluido';
+      if(s.includes('licenciado')) return 'licenciado';
+      if(['licenciado','em_construcao','em_licenciamento','concluido'].includes(s)) return s;
+      return s;
+    }
+    function toYear(v){ const y=parseInt((v||'').toString().trim(),10); return (y>=1900 && y<=2100)? y : null; }
+    function toNum(v){ if(v==null) return NaN; v=v.toString().trim().replace(',','.'); return parseFloat(v); }
+    function norm(v){ return (v||'').toString().trim(); }
+    function sanitizeUrl(u){ try { const url=new URL(u); return url.href; } catch(e){ return ''; } }
+
+    // ===== Base + watchdog =====
     const bases=[
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:20,attribution:'&copy; OSM'}),
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,attribution:'&copy; OSM & CARTO'}),
@@ -117,10 +162,10 @@
     function switchBase(){ map.removeLayer(bases[baseIdx]); baseIdx=(baseIdx+1)%bases.length; bases[baseIdx].addTo(map); setTimeout(()=>map.invalidateSize(true),50); }
     document.getElementById('switchBase').onclick=()=>switchBase();
 
+    // ===== Layers, estados, índices =====
     const pins=L.featureGroup().addTo(map);
     const COLORS={licenciado:'#22a447', em_licenciamento:'#9b59b6', em_construcao:'#f39c12', concluido:'#2e86de'};
     let tooltipsVisible=true;
-
     const markers=[];  // {marker, nameLower, year, status}
     const yearsSet=new Set();
     const selectedStatuses=new Set(['licenciado','em_licenciamento','em_construcao','concluido']);
@@ -131,22 +176,6 @@
       const n = (notes||'').toString();
       const y = ano ? `<br><small>Conclusão: ${ano}</small>` : '';
       return `<div><strong>${name||'Empreendimento'}</strong>${n?'<br>'+n:''}<br><em>Estado: ${s}</em>${y}</div>`;
-    }
-    function sanitizeUrl(u){ try { const url=new URL(u); return url.href; } catch(e){ return ''; } }
-    function toYear(v){ const y=parseInt((v||'').toString().trim(),10); return (y>=1900 && y<=2100)? y : null; }
-    function norm(v){ return (v||'').toString().trim(); }
-    function toNum(v){ if(v==null) return NaN; v=v.toString().trim().replace(',','.'); return parseFloat(v); }
-    function normalizeStatus(raw){
-      const s = norm(raw).toLowerCase()
-        .replace(/[ç]/g,'c').replace(/[ãâáà]/g,'a').replace(/[éê]/g,'e').replace(/[í]/g,'i').replace(/[õôó]/g,'o').replace(/[ú]/g,'u')
-        .replace(/\s+/g,'_');
-      if(!s) return 'em_construcao';
-      if(s.includes('licenciament')) return 'em_licenciamento';
-      if(s.includes('construc')) return 'em_construcao';
-      if(s.includes('conclu')) return 'concluido';
-      if(s.includes('licenciado')) return 'licenciado';
-      if(['licenciado','em_construcao','em_licenciamento','concluido'].includes(s)) return s;
-      return s;
     }
 
     function addPin(lat,lng,{name='Empreendimento',notes='',status='em_construcao',ano=null,link='',pdf=''}={}){
@@ -165,6 +194,7 @@
       return m;
     }
 
+    // ===== Pesquisa por nome =====
     const searchInput=document.getElementById('searchName');
     const namesList=document.getElementById('namesList');
     const btnSearch=document.getElementById('btnSearch');
@@ -194,13 +224,14 @@
     btnSearch.onclick=goToName;
     searchInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); goToName(); }});
 
+    // ===== Filtros =====
     const yearFilter=document.getElementById('yearFilter');
+    const stats=document.getElementById('stats');
     function rebuildYearFilter(){
-      const years=Array.from(yearsSet.values()).sort();
+      const years=Array.from(yearsSet.values()).sort((a,b)=>a-b);
       yearFilter.innerHTML = '<option value=\"\">— Todos —</option>' + years.map(y=>`<option value=\"${y}\">${y}</option>`).join('');
     }
-    yearFilter.onchange=()=>applyFilters();
-
+    function updateStats(n){ stats.textContent = `${n} empreendimento${n===1?'':'s'} visíveis.`; }
     document.getElementById('statusBar').addEventListener('change', (e)=>{
       if(e.target && e.target.type==='checkbox'){
         const val=e.target.value;
@@ -208,6 +239,7 @@
         applyFilters();
       }
     });
+    yearFilter.onchange=()=>applyFilters();
 
     function applyFilters(){
       const ySel = yearFilter.value ? parseInt(yearFilter.value,10) : null;
@@ -225,21 +257,21 @@
         const group=L.featureGroup(filtered);
         map.fitBounds(group.getBounds(), { padding:[40,40] });
       }
+      updateStats(filtered.length);
       ensureTiles();
     }
 
-    let addMode=false;
-    const pinStatus=document.getElementById('pinStatus'), pinName=document.getElementById('pinName'), pinNotes=document.getElementById('pinNotes'),
-          pinYear=document.getElementById('pinYear'), pinLink=document.getElementById('pinLink'), pinPDF=document.getElementById('pinPDF');
-    document.getElementById('enableAdd').onclick=()=>addMode=!addMode;
-    document.getElementById('toggleTooltips').onclick=()=>{
-      tooltipsVisible=!tooltipsVisible;
-      pins.eachLayer(l=>{ const tt=l.getTooltip(); if(tt){ tt.setOpacity(tooltipsVisible?1:0); } });
-    };
-    document.getElementById('fitBtn').onclick=()=>{ if(pins.getLayers().length){ map.fitBounds(pins.getBounds(),{padding:[40,40]}); ensureTiles(); } };
-    document.getElementById('clearPins').onclick=()=>{ pins.clearLayers(); markers.length=0; yearsSet.clear(); rebuildNameIndex(); rebuildYearFilter(); };
+    // ===== Importadores com normalização de cabeçalhos =====
+    function headersIdxNormalized(rawHeaders, namesWanted){
+      const hdrsNorm = rawHeaders.map(h=>normalizeKey(h));
+      const wantedNorm = namesWanted.map(n=>normalizeKey(n));
+      for(let wn of wantedNorm){
+        const i = hdrsNorm.indexOf(wn);
+        if(i>-1) return i;
+      }
+      return -1;
+    }
 
-    function headersIdx(hdrs,names){names=Array.isArray(names)?names:[names]; for(let n of names){const i=hdrs.indexOf(n); if(i>-1) return i;} return -1;}
     function parseCSV(txt){
       if (txt.charCodeAt(0)===0xFEFF) txt=txt.slice(1);
       const first=(txt.split(/\r?\n/)[0]||'').trim();
@@ -250,15 +282,13 @@
         else if((c=='\n'||c=='\r') && !q){ if(field!==''||row.length){ row.push(field); rows.push(row); row=[]; field=''; } while(txt[i+1]=='\n'||txt[i+1]=='\r') i++; }
         else { field+=c; } }
       if(field!==''||row.length){ row.push(field); rows.push(row); }
-      const hdrs=(rows.shift()||[]).map(h=>norm(h).toLowerCase());
-      const iName=headersIdx(hdrs,['name','nome','empreendimento','título','titulo']);
-      const iNotes=headersIdx(hdrs,['notes','notas','descricao','descrição','observacoes','observações']);
-      const iStatus=headersIdx(hdrs,['status','estado','fase']);
-      const iLat=headersIdx(hdrs,['lat','latitude','y']);
-      const iLng=headersIdx(hdrs,['lng','lon','long','longitude','x']);
-      const iYear=headersIdx(hdrs,['anoconclusao','ano','ano_conclusao','conclusao']);
-      const iLink=headersIdx(hdrs,['link','url','site']);
-      const iPDF=headersIdx(hdrs,['tabelavendas','tabela','pdf','tabela_vendas']);
+      const headers = rows.shift() || [];
+      const iName = headersIdxNormalized(headers, KEY_ALIASES.name);
+      const iNotes = headersIdxNormalized(headers, KEY_ALIASES.notes);
+      const iStatus= headersIdxNormalized(headers, KEY_ALIASES.status);
+      const iLat  = headersIdxNormalized(headers, KEY_ALIASES.lat);
+      const iLng  = headersIdxNormalized(headers, KEY_ALIASES.lng);
+      const iYear = headersIdxNormalized(headers, KEY_ALIASES.ano);
       if(iLat===-1||iLng===-1) throw new Error('Cabeçalhos em falta (lat/latitude e lng/longitude).');
       const out=[];
       for(const r of rows){
@@ -267,11 +297,26 @@
         const status = normalizeStatus(iStatus>-1? r[iStatus] : 'em_construcao');
         const lat = toNum(r[iLat]), lng = toNum(r[iLng]);
         const ano = iYear>-1 ? toYear(r[iYear]) : null;
-        const link = iLink>-1 ? r[iLink] : '';
-        const pdf  = iPDF>-1 ? r[iPDF] : '';
+        const link = ''; const pdf='';
         if(!isNaN(lat) && !isNaN(lng)) out.push({name,notes,status,lat,lng,ano,link,pdf});
       }
       return out;
+    }
+
+    function sheetRowToNormalized(row){
+      // Constrói mapa key normalizada -> valor
+      const nk = new Map();
+      Object.keys(row).forEach(k=> nk.set(normalizeKey(k), row[k]));
+      const name = aliasHit(nk,'name') ?? '';
+      const notes= aliasHit(nk,'notes') ?? '';
+      const status= aliasHit(nk,'status') ?? 'em_construcao';
+      const lat = toNum(aliasHit(nk,'lat'));
+      const lng = toNum(aliasHit(nk,'lng'));
+      const ano = toYear(aliasHit(nk,'ano'));
+      // extras opcionais
+      const link = row['Link'] || row['link'] || row['URL'] || row['url'] || '';
+      const pdf  = row['TabelaVendas'] || row['tabelavendas'] || row['PDF'] || row['pdf'] || '';
+      return { name, notes, status: normalizeStatus(status), lat, lng, ano, link, pdf };
     }
 
     document.getElementById('fileInput').addEventListener('change', (evt)=>{
@@ -288,7 +333,7 @@
                 name:feat.properties?.name||'Empreendimento',
                 notes:feat.properties?.notes||'',
                 status:normalizeStatus(feat.properties?.status||'em_construcao'),
-                ano: toYear(feat.properties?.anoConclusao||feat.properties?.ano),
+                ano: toYear(feat.properties?.anoConclusao||feat.properties?.ano||feat.properties?.anoconclusao),
                 link: feat.properties?.link||'',
                 pdf:  feat.properties?.pdf||feat.properties?.tabelaVendas||''
               };
@@ -301,18 +346,7 @@
           } else if(name.endsWith('.xlsx')||name.endsWith('.xls')){
             const wb=XLSX.read(new Uint8Array(e.target.result), {type:'array'});
             const ws=wb.Sheets[wb.SheetNames[0]]; const json=XLSX.utils.sheet_to_json(ws, {defval:'', raw:false});
-            const hdrs=Object.keys(json[0]||{}).map(h=>h.toString().trim().toLowerCase());
-            function get(row,alts){ for(let a of alts){ if(a in row) return row[a]; const k=alts.find(x=>hdrs.includes(x)); if(k) return row[k]; } return ''; }
-            const rows=json.map(r=>({ 
-              name: get(r,['name','nome','empreendimento','titulo','título']),
-              notes: get(r,['notes','notas','descricao','descrição','observacoes','observações']),
-              status: normalizeStatus(get(r,['status','estado','fase'])||'em_construcao'),
-              lat: parseFloat((get(r,['lat','latitude','y'])||'').toString().replace(',','.')),
-              lng: parseFloat((get(r,['lng','lon','long','longitude','x'])||'').toString().replace(',','.')),
-              ano: toYear(get(r,['anoconclusao','ano','ano_conclusao','conclusao'])),
-              link: get(r,['link','url','site']),
-              pdf:  get(r,['tabelavendas','tabela','pdf','tabela_vendas'])
-            })).filter(r=>!isNaN(r.lat)&&!isNaN(r.lng));
+            const rows=json.map(sheetRowToNormalized).filter(r=>!isNaN(r.lat)&&!isNaN(r.lng));
             rows.forEach(r=>added.push(addPin(r.lat,r.lng,r)));
           } else {
             alert('Formato não suportado.');
@@ -326,6 +360,19 @@
       if(f.name.toLowerCase().endsWith('.xlsx')||f.name.toLowerCase().endsWith('.xls')) rdr.readAsArrayBuffer(f); else rdr.readAsText(f);
     });
 
+    // ===== Botões e interações =====
+    let addMode=false;
+    const pinStatus=document.getElementById('pinStatus'), pinName=document.getElementById('pinName'), pinNotes=document.getElementById('pinNotes'),
+          pinYear=document.getElementById('pinYear'), pinLink=document.getElementById('pinLink'), pinPDF=document.getElementById('pinPDF');
+    document.getElementById('enableAdd').onclick=()=>addMode=!addMode;
+    document.getElementById('toggleTooltips').onclick=()=>{
+      tooltipsVisible=!tooltipsVisible;
+      pins.eachLayer(l=>{ const tt=l.getTooltip(); if(tt){ tt.setOpacity(tooltipsVisible?1:0); } });
+    };
+    document.getElementById('fitBtn').onclick=()=>{ if(pins.getLayers().length){ map.fitBounds(pins.getBounds(),{padding:[40,40]}); ensureTiles(); } };
+    document.getElementById('clearPins').onclick=()=>{ pins.clearLayers(); markers.length=0; yearsSet.clear(); rebuildNameIndex(); rebuildYearFilter(); updateStats(0); };
+
+    // ===== Freguesias =====
     const freguesiasUrl='https://arcgis.aguasdoporto.pt/arcgis/rest/services/Porto_mais_permeavel/Porto_mais_permeavel/MapServer/7/query?where=1%3D1&outFields=*&f=geojson';
     let labelLayer=L.layerGroup();
     fetch(freguesiasUrl).then(r=>r.json()).then(geo=>{
