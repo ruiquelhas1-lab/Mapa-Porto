@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Garvetur Luxury Porto — Mapa v4.2</title>
+  <title>Garvetur Luxury Porto — Mapa v4.3</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
     :root { --panel:#ffffff; --shadow:0 6px 24px rgba(0,0,0,.12); --radius:12px; --brand:#bfa06a; --dark:#111; }
     html, body { height:100%; margin:0; background:#f5efe6 }
     #map { position:absolute; inset:0; height:100%; width:100%; }
-    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:var(--panel); padding:12px; border-radius:var(--radius); box-shadow:var(--shadow); font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width:680px; border:1px solid #eee }
+    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:var(--panel); padding:12px; border-radius:var(--radius); box-shadow:var(--shadow); font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width:700px; border:1px solid #eee }
     .controls strong { color:var(--dark) }
     .controls label { display:block; font-size:12px; margin-top:8px }
     .controls input, .controls select, .controls textarea { width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:8px; font-size:12px }
@@ -78,7 +78,7 @@
     </div>
     <label>Notas</label><textarea id="pinNotes" rows="2" placeholder="T2/T3; promotor X"></textarea>
     <div class="row">
-      <div><label>AnoConclusao</label><input id="pinYear" type="number" placeholder="2026" /></div>
+      <div><label>AnoConclusao</label><input id="pinYear" type="text" placeholder="2026 ou '2026 (previsto)'" /></div>
       <div><label>Link (URL)</label><input id="pinLink" placeholder="https://..." /></div>
       <div><label>TabelaVendas (URL PDF)</label><input id="pinPDF" placeholder="https://.../tabela.pdf" /></div>
     </div>
@@ -110,27 +110,38 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script>
-    // ===== Helpers de normalização =====
+    // ===== Helpers =====
     function normalizeKey(k){
       if(k==null) return '';
       return k.toString().toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove acentos
-        .replace(/[^a-z0-9]+/g,'') // remove espaços/pontuação
-        ;
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .replace(/[^a-z0-9]+/g,''); // remove espaços e pontuação
     }
+    function extractYear(v){
+      if(v==null) return null;
+      const s=v.toString();
+      const m=s.match(/(19|20)\d{2}/); // 1900–2099
+      if(m){ const y=parseInt(m[0],10); if(y>=1900 && y<=2100) return y; }
+      const n=parseInt(s,10); if(!isNaN(n) && n>=1900 && n<=2100) return n;
+      return null;
+    }
+    function toNum(v){ if(v==null) return NaN; v=v.toString().trim().replace(',','.'); return parseFloat(v); }
+    function norm(v){ return (v||'').toString().trim(); }
+    function sanitizeUrl(u){ try { const url=new URL(u); return url.href; } catch(e){ return ''; } }
+
     const KEY_ALIASES = {
       name: ['name','nome','empreendimento','titulo','título'],
       notes: ['notes','notas','descricao','descrição','observacoes','observações'],
       status: ['status','estado','fase'],
       lat: ['lat','latitude','y'],
       lng: ['lng','lon','long','longitude','x'],
-      ano: ['anoconclusao','ano','anoconclusao','ano_conclusao','conclusao','anodeconclusao','anoconclusão']
+      ano: ['anoconclusao','ano','ano_conclusao','conclusao','anodeconclusao','anoconclusao','anoconclusão','ano de conclusao','ano de conclusão']
     };
-    function aliasHit(nk, target){ // nk: normalized key map; target: canonical ('name','lat',...)
+    function aliasHit(mapNorm, target){
       const alts = KEY_ALIASES[target] || [target];
       for(const a of alts){
         const na = normalizeKey(a);
-        if(nk.has(na)) return nk.get(na);
+        if(mapNorm.has(na)) return mapNorm.get(na);
       }
       return null;
     }
@@ -146,10 +157,6 @@
       if(['licenciado','em_construcao','em_licenciamento','concluido'].includes(s)) return s;
       return s;
     }
-    function toYear(v){ const y=parseInt((v||'').toString().trim(),10); return (y>=1900 && y<=2100)? y : null; }
-    function toNum(v){ if(v==null) return NaN; v=v.toString().trim().replace(',','.'); return parseFloat(v); }
-    function norm(v){ return (v||'').toString().trim(); }
-    function sanitizeUrl(u){ try { const url=new URL(u); return url.href; } catch(e){ return ''; } }
 
     // ===== Base + watchdog =====
     const bases=[
@@ -177,7 +184,6 @@
       const y = ano ? `<br><small>Conclusão: ${ano}</small>` : '';
       return `<div><strong>${name||'Empreendimento'}</strong>${n?'<br>'+n:''}<br><em>Estado: ${s}</em>${y}</div>`;
     }
-
     function addPin(lat,lng,{name='Empreendimento',notes='',status='em_construcao',ano=null,link='',pdf=''}={}){
       status = normalizeStatus(status);
       const m=L.marker([lat,lng],{icon:icon(COLORS[status]||COLORS.em_construcao),draggable:true});
@@ -194,7 +200,7 @@
       return m;
     }
 
-    // ===== Pesquisa por nome =====
+    // Pesquisa por nome
     const searchInput=document.getElementById('searchName');
     const namesList=document.getElementById('namesList');
     const btnSearch=document.getElementById('btnSearch');
@@ -224,7 +230,7 @@
     btnSearch.onclick=goToName;
     searchInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); goToName(); }});
 
-    // ===== Filtros =====
+    // Filtros
     const yearFilter=document.getElementById('yearFilter');
     const stats=document.getElementById('stats');
     function rebuildYearFilter(){
@@ -261,17 +267,7 @@
       ensureTiles();
     }
 
-    // ===== Importadores com normalização de cabeçalhos =====
-    function headersIdxNormalized(rawHeaders, namesWanted){
-      const hdrsNorm = rawHeaders.map(h=>normalizeKey(h));
-      const wantedNorm = namesWanted.map(n=>normalizeKey(n));
-      for(let wn of wantedNorm){
-        const i = hdrsNorm.indexOf(wn);
-        if(i>-1) return i;
-      }
-      return -1;
-    }
-
+    // Importadores — CSV
     function parseCSV(txt){
       if (txt.charCodeAt(0)===0xFEFF) txt=txt.slice(1);
       const first=(txt.split(/\r?\n/)[0]||'').trim();
@@ -283,12 +279,15 @@
         else { field+=c; } }
       if(field!==''||row.length){ row.push(field); rows.push(row); }
       const headers = rows.shift() || [];
-      const iName = headersIdxNormalized(headers, KEY_ALIASES.name);
-      const iNotes = headersIdxNormalized(headers, KEY_ALIASES.notes);
-      const iStatus= headersIdxNormalized(headers, KEY_ALIASES.status);
-      const iLat  = headersIdxNormalized(headers, KEY_ALIASES.lat);
-      const iLng  = headersIdxNormalized(headers, KEY_ALIASES.lng);
-      const iYear = headersIdxNormalized(headers, KEY_ALIASES.ano);
+      // Map normalizado
+      const normIdx = new Map(headers.map((h,i)=>[normalizeKey(h), i]));
+      function gi(keys){ for(const k of keys){ const nk=normalizeKey(k); if(normIdx.has(nk)) return normIdx.get(nk); } return -1; }
+      const iName = gi(KEY_ALIASES.name);
+      const iNotes= gi(KEY_ALIASES.notes);
+      const iStatus=gi(KEY_ALIASES.status);
+      const iLat  = gi(KEY_ALIASES.lat);
+      const iLng  = gi(KEY_ALIASES.lng);
+      const iYear = gi(KEY_ALIASES.ano);
       if(iLat===-1||iLng===-1) throw new Error('Cabeçalhos em falta (lat/latitude e lng/longitude).');
       const out=[];
       for(const r of rows){
@@ -296,27 +295,42 @@
         const notes = iNotes>-1? r[iNotes] : '';
         const status = normalizeStatus(iStatus>-1? r[iStatus] : 'em_construcao');
         const lat = toNum(r[iLat]), lng = toNum(r[iLng]);
-        const ano = iYear>-1 ? toYear(r[iYear]) : null;
+        const ano = iYear>-1 ? extractYear(r[iYear]) : null;
         const link = ''; const pdf='';
         if(!isNaN(lat) && !isNaN(lng)) out.push({name,notes,status,lat,lng,ano,link,pdf});
       }
       return out;
     }
 
-    function sheetRowToNormalized(row){
-      // Constrói mapa key normalizada -> valor
-      const nk = new Map();
-      Object.keys(row).forEach(k=> nk.set(normalizeKey(k), row[k]));
-      const name = aliasHit(nk,'name') ?? '';
-      const notes= aliasHit(nk,'notes') ?? '';
-      const status= aliasHit(nk,'status') ?? 'em_construcao';
-      const lat = toNum(aliasHit(nk,'lat'));
-      const lng = toNum(aliasHit(nk,'lng'));
-      const ano = toYear(aliasHit(nk,'ano'));
-      // extras opcionais
-      const link = row['Link'] || row['link'] || row['URL'] || row['url'] || '';
-      const pdf  = row['TabelaVendas'] || row['tabelavendas'] || row['PDF'] || row['pdf'] || '';
-      return { name, notes, status: normalizeStatus(status), lat, lng, ano, link, pdf };
+    // Importadores — XLSX (auto-deteta folha)
+    function sheetToRowsAuto(workbook){
+      const out=[];
+      const sheetNames=workbook.SheetNames||[];
+      for(const sn of sheetNames){
+        const ws = workbook.Sheets[sn];
+        const json = XLSX.utils.sheet_to_json(ws, {defval:'', raw:false});
+        if(!json.length) continue;
+        // construir mapa normalizado de cabeçalhos
+        const hdrRaw = Object.keys(json[0]);
+        const hdrMap = new Map(hdrRaw.map(h=>[normalizeKey(h), h]));
+        const hasLat = KEY_ALIASES.lat.some(k=>hdrMap.has(normalizeKey(k)));
+        const hasLng = KEY_ALIASES.lng.some(k=>hdrMap.has(normalizeKey(k)));
+        if(!(hasLat && hasLng)) continue; // ignorar folhas sem coordenadas
+        json.forEach(row=>{
+          const mapNorm = new Map(Object.keys(row).map(k=>[normalizeKey(k), row[k]]));
+          const name = aliasHit(mapNorm,'name') ?? '';
+          const notes= aliasHit(mapNorm,'notes') ?? '';
+          const status= aliasHit(mapNorm,'status') ?? 'em_construcao';
+          const lat = toNum(aliasHit(mapNorm,'lat'));
+          const lng = toNum(aliasHit(mapNorm,'lng'));
+          const ano = extractYear(aliasHit(mapNorm,'ano'));
+          // extras
+          const link = row['Link'] || row['link'] || row['URL'] || row['url'] || '';
+          const pdf  = row['TabelaVendas'] || row['tabelavendas'] || row['PDF'] || row['pdf'] || '';
+          if(!isNaN(lat) && !isNaN(lng)) out.push({name,notes,status,lat,lng,ano,link,pdf});
+        });
+      }
+      return out;
     }
 
     document.getElementById('fileInput').addEventListener('change', (evt)=>{
@@ -333,7 +347,7 @@
                 name:feat.properties?.name||'Empreendimento',
                 notes:feat.properties?.notes||'',
                 status:normalizeStatus(feat.properties?.status||'em_construcao'),
-                ano: toYear(feat.properties?.anoConclusao||feat.properties?.ano||feat.properties?.anoconclusao),
+                ano: extractYear(feat.properties?.anoConclusao||feat.properties?.ano||feat.properties?.anoconclusao),
                 link: feat.properties?.link||'',
                 pdf:  feat.properties?.pdf||feat.properties?.tabelaVendas||''
               };
@@ -345,8 +359,7 @@
             rows.forEach(r=>added.push(addPin(r.lat,r.lng,r)));
           } else if(name.endsWith('.xlsx')||name.endsWith('.xls')){
             const wb=XLSX.read(new Uint8Array(e.target.result), {type:'array'});
-            const ws=wb.Sheets[wb.SheetNames[0]]; const json=XLSX.utils.sheet_to_json(ws, {defval:'', raw:false});
-            const rows=json.map(sheetRowToNormalized).filter(r=>!isNaN(r.lat)&&!isNaN(r.lng));
+            const rows=sheetToRowsAuto(wb);
             rows.forEach(r=>added.push(addPin(r.lat,r.lng,r)));
           } else {
             alert('Formato não suportado.');
@@ -360,7 +373,7 @@
       if(f.name.toLowerCase().endsWith('.xlsx')||f.name.toLowerCase().endsWith('.xls')) rdr.readAsArrayBuffer(f); else rdr.readAsText(f);
     });
 
-    // ===== Botões e interações =====
+    // Botões utilitários
     let addMode=false;
     const pinStatus=document.getElementById('pinStatus'), pinName=document.getElementById('pinName'), pinNotes=document.getElementById('pinNotes'),
           pinYear=document.getElementById('pinYear'), pinLink=document.getElementById('pinLink'), pinPDF=document.getElementById('pinPDF');
@@ -370,9 +383,9 @@
       pins.eachLayer(l=>{ const tt=l.getTooltip(); if(tt){ tt.setOpacity(tooltipsVisible?1:0); } });
     };
     document.getElementById('fitBtn').onclick=()=>{ if(pins.getLayers().length){ map.fitBounds(pins.getBounds(),{padding:[40,40]}); ensureTiles(); } };
-    document.getElementById('clearPins').onclick=()=>{ pins.clearLayers(); markers.length=0; yearsSet.clear(); rebuildNameIndex(); rebuildYearFilter(); updateStats(0); };
+    document.getElementById('clearPins').onclick=()=>{ pins.clearLayers(); markers.length=0; yearsSet.clear(); rebuildNameIndex(); rebuildYearFilter(); document.getElementById('stats').textContent='0 empreendimentos visíveis.'; };
 
-    // ===== Freguesias =====
+    // Freguesias
     const freguesiasUrl='https://arcgis.aguasdoporto.pt/arcgis/rest/services/Porto_mais_permeavel/Porto_mais_permeavel/MapServer/7/query?where=1%3D1&outFields=*&f=geojson';
     let labelLayer=L.layerGroup();
     fetch(freguesiasUrl).then(r=>r.json()).then(geo=>{
