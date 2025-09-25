@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapa Porto — v3 Debug</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    html, body { height:100%; margin:0; background:#f5efe6 }
+    #map { position:absolute; inset:0; height:100%; width:100% }
+    .controls { position:absolute; top:12px; left:12px; z-index:1000; background:#fff; padding:10px; border:1px solid #ddd; border-radius:10px; font-family:system-ui }
+    .banner { position:absolute; top:0; left:0; right:0; background:#fee; color:#900; padding:6px 10px; font-family:system-ui; font-size:12px; display:none }
+  </style>
+</head>
+<body>
+<div class="banner" id="banner"></div>
+<div class="controls">
+  <strong>DEBUG</strong> — Se isto aparecer sem mapa, reporte a 1ª linha vermelha da consola.<br>
+  <label>Importar (XLSX/CSV/GeoJSON)</label>
+  <input type="file" id="fileInput" accept=".xlsx,.xls,.csv,.geojson,.json"/>
+  <button id="switchBase">Alternar base</button>
+</div>
+<div id="map"></div>
+<script>
+function showBanner(msg){ const b=document.getElementById('banner'); b.textContent=msg; b.style.display='block'; }
+window.addEventListener('error', (e)=>{ showBanner('Erro JS: '+(e.message||e.error)); console.error(e); });
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onerror="showBanner('Falha a carregar Leaflet.js do CDN');"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" onerror="showBanner('Falha a carregar XLSX do CDN');"></script>
+<script>
+let map;
+try{
+  const bases=[
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:20,attribution:'&copy; OSM'}),
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,attribution:'&copy; OSM & CARTO'}),
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri, USGS, NOAA'})
+  ];
+  map=L.map('map').setView([41.1496,-8.6109],12);
+  let baseIdx=0; bases[baseIdx].addTo(map);
+  document.getElementById('switchBase').onclick=()=>{ try{ map.removeLayer(bases[baseIdx]); baseIdx=(baseIdx+1)%bases.length; bases[baseIdx].addTo(map);}catch(err){showBanner('Erro a alternar base: '+err.message);} };
+} catch(err){
+  showBanner('Erro a iniciar mapa: '+err.message);
+}
+</script>
+</body>
+</html>
