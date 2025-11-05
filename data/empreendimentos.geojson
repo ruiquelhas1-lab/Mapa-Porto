@@ -1,0 +1,4582 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Menéres 777",
+        "concelho": null,
+        "notas": "Apartamentos T2 e T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.179078",
+        "longitude": "-8.68319",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://m777.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.68319,
+          41.179078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Antas Prime",
+        "concelho": null,
+        "notas": "Em construção; T2/T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16054183295912",
+        "longitude": "-8.585580295037614",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.585580295037614,
+          41.16054183295912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Forte",
+        "concelho": null,
+        "notas": "Apartamentos T0/T1/T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.34337951168891",
+        "longitude": "-8.750900385790908",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://27006740.hs-sites-eu1.com/pt-pt/vc-forte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.750900385790908,
+          41.34337951168891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Foliage",
+        "concelho": null,
+        "notas": "Apartamentos T3/T4",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16061301566964",
+        "longitude": "-8.673432579455456",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://27006740.hs-sites-eu1.com/hubfs/Foliage_Tabela%20Comercial%20atualizada.pdf?hsLang=pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.673432579455456,
+          41.16061301566964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Raiz",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3/T4",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16458988957599",
+        "longitude": "-8.670498322071996",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://27006740.hs-sites-eu1.com/pt/raiz?utm_medium=email&_hsenc=p2ANqtz--XhdItuZqcipNY-SQhlNAz90WaPTjZSqWU8-RgeEAKar7kyh4FuTtwROeU6CWuDlV8wZFZ3kzY2UPgDu7C8u4rKzj7QxdJw_J1TcQjl3GkTbwqRYg&_hsmi=118212834&utm_content=118212834&utm_source=hs_email"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.670498322071996,
+          41.16458988957599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The Avenue",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3/T4",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16521362846466",
+        "longitude": "-8.59755387983526",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://nort-properties.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.59755387983526,
+          41.16521362846466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The View",
+        "concelho": null,
+        "notas": "Apartamentos T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13823767440179",
+        "longitude": "-8.570998603252303",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://nort-properties.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.570998603252303,
+          41.13823767440179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Avenida Premium",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11687076428396",
+        "longitude": "-8.60676265928301",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.avenidapremium.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60676265928301,
+          41.11687076428396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Eleven",
+        "concelho": null,
+        "notas": "Apartamentos T3",
+        "estado": "em_construcao",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": "-8.647389674414924",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://atlanticoliving.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.647389674414924,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Bosk",
+        "concelho": null,
+        "notas": "Apartamentos T2 e T3",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13344697492787",
+        "longitude": "-8.537099324342659",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://nort-properties.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.537099324342659,
+          41.13344697492787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Gramoínhos",
+        "concelho": null,
+        "notas": "Apartamentos T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.108807119835845",
+        "longitude": "-8.622940960507071",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://nossocapital.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.622940960507071,
+          41.108807119835845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Madalena Vista Mar",
+        "concelho": null,
+        "notas": "Apartamentos T2 e T3",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.10759126658638",
+        "longitude": "-8.654901852935241",
+        "conclusao": "2029.0",
+        "preço_m2": null,
+        "link": "https://nossocapital.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.654901852935241,
+          41.10759126658638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Herdade de Vilar",
+        "concelho": null,
+        "notas": "Apartamentos T0/T1/T2",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.08653343602931",
+        "longitude": "-8.623769513683161",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://herdadevilar.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.623769513683161,
+          41.08653343602931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Foz Nature",
+        "concelho": null,
+        "notas": "Apartamentos / Moradias T3/T4/T5",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15107803555791",
+        "longitude": "-8.668082879521076",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://foznature.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.668082879521076,
+          41.15107803555791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The Breeze",
+        "concelho": null,
+        "notas": "Apartamentos T3 ",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1238635424034",
+        "longitude": "-8.665992065583229",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.thebreeze.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.665992065583229,
+          41.1238635424034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Azuaga 68 / Ernesto 65",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13685625316915",
+        "longitude": "-8.606250889181755",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.azuaga68.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.606250889181755,
+          41.13685625316915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Aurios",
+        "concelho": null,
+        "notas": "Apartamentos / Moradias T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14310044431507",
+        "longitude": "-8.587978792886304",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://aurios.pt/pt/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.587978792886304,
+          41.14310044431507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Douro Nobilis",
+        "concelho": null,
+        "notas": "Aparatemnto T4 Duplex",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13232098185415",
+        "longitude": "-8.625137874362425",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://revito.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.625137874362425,
+          41.13232098185415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Douro Nobilis II",
+        "concelho": null,
+        "notas": "Aparatemnto T4 Duplex",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.133274518537284",
+        "longitude": "-8.625116416690297",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://revito.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.625116416690297,
+          41.133274518537284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Essence",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15882699232601",
+        "longitude": "-8.584600847512442",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://almadevelopment.pt/essence-porto/?utm_source=google&utm_medium=cpc&utm_campaign=ESSENCE%20-%20Max%20Desempenho%20PT&utm_id=20981436680&gad_source=1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.584600847512442,
+          41.15882699232601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Nobel 41-85",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16005727191822",
+        "longitude": "-8.584020180438936",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.risegroup.pt/pt/empreendimentos/nobel-41-85_2/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.584020180438936,
+          41.16005727191822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Living Park VII",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.20736017061847",
+        "longitude": "-8.324848699290392",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.324848699290392,
+          41.20736017061847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Boss Garden",
+        "concelho": null,
+        "notas": "Apartamentos T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16772579295225",
+        "longitude": "-8.618726745895463",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://aransahomes.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.618726745895463,
+          41.16772579295225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "PrivilegeGaia",
+        "concelho": null,
+        "notas": "Moradias T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.064722587590055",
+        "longitude": "-8.63734999653012",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://aransahomes.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.63734999653012,
+          41.064722587590055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Miramar Gardens",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3/T4 - Ainda não começou",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.064706183349784",
+        "longitude": "-8.636321968433883",
+        "conclusao": "2030.0",
+        "preço_m2": null,
+        "link": "https://aransahomes.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.636321968433883,
+          41.064706183349784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Vintage Gardens",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.17820021455164",
+        "longitude": "-8.584611707573764",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.spintos.pt/inmobiliaria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.584611707573764,
+          41.17820021455164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Riviera River ",
+        "concelho": null,
+        "notas": "Apartaemntos t2/ Só Revendas",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.126868388105905",
+        "longitude": "-8.54211516183474",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.54211516183474,
+          41.126868388105905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Radical ",
+        "concelho": null,
+        "notas": "Apartamentos T3 ",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1264522731553",
+        "longitude": "-8.624792123365081",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.624792123365081,
+          41.1264522731553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Santa Aqua Living",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.19786061423495",
+        "longitude": "-8.580508013560049",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.580508013560049,
+          41.19786061423495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Gaia Hills",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3/T4 - Comercialização Dills",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.143201935062514",
+        "longitude": "-8.632433431491977",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.gaiahills.pt/pt/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.632433431491977,
+          41.143201935062514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Gaia Lofts",
+        "concelho": null,
+        "notas": "Apartamentos T1 - Comercialização Dills",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1393426429201",
+        "longitude": "-8.621594201230561",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.621594201230561,
+          41.1393426429201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Alum",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2 - Só tem 3 Tipologias T1 (239K) e 1 T2 (297k)",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.22759632184907",
+        "longitude": "-8.616974227896442",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.planoa3.pt/#tipologia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.616974227896442,
+          41.22759632184907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Madalena Vila Mar",
+        "concelho": null,
+        "notas": "Moradias T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.102256453541756",
+        "longitude": "-8.659719874444308",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.659719874444308,
+          41.102256453541756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Lurion",
+        "concelho": null,
+        "notas": "Apartamentos T0/T1/T2/T3/T4",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13389954884105",
+        "longitude": "-8.598404376332649",
+        "conclusao": "2030.0",
+        "preço_m2": null,
+        "link": "https://revito.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.598404376332649,
+          41.13389954884105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Splendouro Village",
+        "concelho": null,
+        "notas": "29 Moradias T4 a T5",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13560172238032",
+        "longitude": "-8.650198933924633",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "http://village.splendouro.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.650198933924633,
+          41.13560172238032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The Grand Splendouro",
+        "concelho": null,
+        "notas": "Apartamentos T2 a T5",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13309091751646",
+        "longitude": "-8.667665860923389",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://grand.splendouro.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.667665860923389,
+          41.13309091751646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Splendouro Marina Houses",
+        "concelho": null,
+        "notas": "11 Moradias T4 e T5",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.139237132033195",
+        "longitude": "-8.648993889758607",
+        "conclusao": "2024.0",
+        "preço_m2": null,
+        "link": "https://marina.splendouro.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.648993889758607,
+          41.139237132033195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Living Sea ",
+        "concelho": null,
+        "notas": "Aparatamentos T2 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.135682386513",
+        "longitude": "-8.667177096092528",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt/empreendimentos/living-sea/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.667177096092528,
+          41.135682386513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Ocean Living",
+        "concelho": null,
+        "notas": "Apartamentos T2/T3/T4",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11538920308218",
+        "longitude": "-8.662048712493501",
+        "conclusao": "2024.0",
+        "preço_m2": null,
+        "link": "https://theoceanliving.pt/pt-pt/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.662048712493501,
+          41.11538920308218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Living Prados ",
+        "concelho": null,
+        "notas": "Aparatamentos T2 a T4",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.17421816440439",
+        "longitude": "-8.685720718592517",
+        "conclusao": "2023.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt/empreendimentos/living-prados/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.685720718592517,
+          41.17421816440439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Nautilus IV",
+        "concelho": null,
+        "notas": "Aparatamentos T2 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.17395848527968",
+        "longitude": "-8.683146172174458",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt/empreendimentos/nautilus-iv/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.683146172174458,
+          41.17395848527968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Panorama",
+        "concelho": null,
+        "notas": "Aparatamentos T2 a T4",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.149074155060326",
+        "longitude": "-8.641353189072976",
+        "conclusao": "2024.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt/empreendimentos/panorama-douro-residences/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.641353189072976,
+          41.149074155060326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Marina Douro",
+        "concelho": null,
+        "notas": "Apartamentos T1 a T5",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14013042837216",
+        "longitude": "-8.651654278112877",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://marinadouro.com/disponibilidades/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.651654278112877,
+          41.14013042837216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Douro Atlântico III",
+        "concelho": null,
+        "notas": "Aparatamentos T2 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13499384759188",
+        "longitude": "-8.667757170720947",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://grupomcaetano.pt/empreendimentos/douro-atlantico-iii/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.667757170720947,
+          41.13499384759188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro Ocean",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.134369107234086",
+        "longitude": "-8.668771057960605",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://saldouro.com/collection/ocean/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.668771057960605,
+          41.134369107234086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro Park",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13324589063327",
+        "longitude": "-8.667773276265095",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://saldouro.com/collection/park/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.667773276265095,
+          41.13324589063327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro reserve",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.134748895546885",
+        "longitude": "-8.667912751125757",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://saldouro.com/collection/reserve/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.667912751125757,
+          41.134748895546885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro Coast",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13324589063327",
+        "longitude": "-8.66776254742966",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://saldouro.com/collection/coast/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.66776254742966,
+          41.13324589063327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro Horizon",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13324589063327",
+        "longitude": "-8.66776254742966",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://saldouro.com/collection/horizon/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.66776254742966,
+          41.13324589063327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sal Douro Sea Pearl",
+        "concelho": null,
+        "notas": null,
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Egas Moniz 209",
+        "concelho": null,
+        "notas": " 15 apartamentos (T1 a T3 duplex, entre 52 m² e 139 m² - Comercializado por Quintela e Penalva",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16327642515784",
+        "longitude": "-8.619225835041389",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://egasmoniz209.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.619225835041389,
+          41.16327642515784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Casas Alma",
+        "concelho": null,
+        "notas": "Moradias T3 - Norden promotor",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.07866875799975",
+        "longitude": "-8.619647005820633",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.norden.pt/alma/#"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.619647005820633,
+          41.07866875799975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "A Quadra ",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3 - Comercializado por JLL",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13076744940458",
+        "longitude": "-8.605106825709381",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://quadra-gaia.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.605106825709381,
+          41.13076744940458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Eleven",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3/T4 - Taga Urbanic",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.12894963725594",
+        "longitude": "-8.60895888399385",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://elevengaia.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60895888399385,
+          41.12894963725594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Cais da Pescaria",
+        "concelho": null,
+        "notas": "20 Apartamentos T1",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14178070487412",
+        "longitude": "-8.624313874416748",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/pescaria-riverfront-vila-nova-de-gaia/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.624313874416748,
+          41.14178070487412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Rasa 503",
+        "concelho": null,
+        "notas": "12 Apartamentos T1 a T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.118206454300626",
+        "longitude": "-8.610682674417696",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://plano-inclinado.pt/projetos/rasa-503-vng"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.610682674417696,
+          41.118206454300626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Serralves 239",
+        "concelho": null,
+        "notas": "12 Apartamnetos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.155248857097476",
+        "longitude": "-8.65070278975788",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://plano-inclinado.pt/projetos/serralves-239"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.65070278975788,
+          41.155248857097476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Land Roots River",
+        "concelho": null,
+        "notas": "4 Apartamentos T2",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13666037828811",
+        "longitude": "-8.621066547429539",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.land-roots.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.621066547429539,
+          41.13666037828811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Side Avenue",
+        "concelho": null,
+        "notas": "Apartamentos T0/T1/T2 ",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.12109124577433",
+        "longitude": "-8.60884020325301",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://cleveroption.pt/avenue/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60884020325301,
+          41.12109124577433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Royal Green",
+        "concelho": null,
+        "notas": "Apartamentos T/T2/T2 duplex - 11 pisos",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11826078886197",
+        "longitude": "-8.617716332158436",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://royalgreentower.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.617716332158436,
+          41.11826078886197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Prestige Gaia",
+        "concelho": null,
+        "notas": "80 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.12621611065877",
+        "longitude": "-8.63051265374531",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://prestigegaia.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.63051265374531,
+          41.12621611065877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Arsil 9",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11160694000072",
+        "longitude": "-8.60265848975971",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.arsilinvestimentos.pt/arsil-9-clube-dos-cacadores/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60265848975971,
+          41.11160694000072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Fojo Residence",
+        "concelho": null,
+        "notas": "111 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1313715094334",
+        "longitude": "-8.639502539030412",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://gruporio.pt/projeto/fojo/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.639502539030412,
+          41.1313715094334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Jardim das Flores",
+        "concelho": null,
+        "notas": "152 Apartamentos T0/T1/T2",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.10516809637983",
+        "longitude": "-8.622132239790282",
+        "conclusao": "2030.0",
+        "preço_m2": null,
+        "link": "https://gruporio.pt/projeto/jardim-das-flores/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.622132239790282,
+          41.10516809637983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "São Dinis",
+        "concelho": null,
+        "notas": "38 Apartamentos T0/T1/T2",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16785472488655",
+        "longitude": "-8.619386774415608",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://gruporio.pt/projeto/sao-dinis/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.619386774415608,
+          41.16785472488655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sea Leça",
+        "concelho": null,
+        "notas": "Brevemente",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.181997709358875",
+        "longitude": "-8.678189777553738",
+        "conclusao": "2030.0",
+        "preço_m2": null,
+        "link": "https://gruporio.pt/projeto/sea-leca/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.678189777553738,
+          41.181997709358875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Majestic Beach",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3 - Comercializado por Réplica",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.12948907623479",
+        "longitude": "-8.6665233835363",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/34259172/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.6665233835363,
+          41.12948907623479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Jardins do Olival",
+        "concelho": null,
+        "notas": "52 Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.04568944537345",
+        "longitude": "-8.504388544282502",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.504388544282502,
+          41.04568944537345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Serra do Pilar Condominium",
+        "concelho": null,
+        "notas": "12 Apartamentos T2 e T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.135148548757925",
+        "longitude": "-8.606343233021903",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://kokyuproperties.com/pt/projects/serra-do-pilar/index.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.606343233021903,
+          41.135148548757925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Genuíno Gaia",
+        "concelho": null,
+        "notas": "36 Apartamentos T1/T2/T3",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11885677314856",
+        "longitude": "-8.632138615074714",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://genuinoinvestments.com/projeto/genuino-santa-marinha/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.632138615074714,
+          41.11885677314856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Genuíno São Félix Villas",
+        "concelho": null,
+        "notas": "5 Moradias T3 e T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://genuinoinvestments.com/projeto/genuino-s-felix-villas/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Além Mar",
+        "concelho": null,
+        "notas": "19 apartamentos de tipologias T1, T2 e T3",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://www.pedmar.pt/alemmar/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Pinheiro Manso Residences",
+        "concelho": null,
+        "notas": "23 Apartamentos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16585498321708",
+        "longitude": "-8.65142693200518",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/33985404/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.65142693200518,
+          41.16585498321708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Fenão de Magalhães 127",
+        "concelho": null,
+        "notas": "334 Apartamentos T0 a T3+1",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15165864144376",
+        "longitude": "-8.597703289678405",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.avenue.pt/pt/projetos/fernao-magalhaes-127/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.597703289678405,
+          41.15165864144376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Life in Porto",
+        "concelho": null,
+        "notas": "108 Apartamentos T0/T1/T2 ",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15435513479774",
+        "longitude": "-8.605841232005726",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.homehub.pt/pt/empreendimentos/life-in-porto_7/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.605841232005726,
+          41.15435513479774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Antas Atrium",
+        "concelho": null,
+        "notas": "168 Apartamentos T0 a T4 - 2ª fase",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.163803187891176",
+        "longitude": "-8.5870737748729",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://antasatrium.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.5870737748729,
+          41.163803187891176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Torrinha Garden",
+        "concelho": null,
+        "notas": "27 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15272879557559",
+        "longitude": "-8.62132977433331",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://kokyuproperties.com/pt/projects/torrinha-gardens/index.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.62132977433331,
+          41.15272879557559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Bouças Ribas",
+        "concelho": null,
+        "notas": "37 Apartamentos T1/T2/T3",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.161026860088924",
+        "longitude": "-8.574724811453944",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://boucaribas.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.574724811453944,
+          41.161026860088924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Clover Hill",
+        "concelho": null,
+        "notas": "29 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15608235257066",
+        "longitude": "-8.60240373200569",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60240373200569,
+          41.15608235257066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Bonart Homes",
+        "concelho": null,
+        "notas": "Apartamentos T0 a T3 duplex",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14975548981146",
+        "longitude": "-8.593481086508765",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "http://bonart.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.593481086508765,
+          41.14975548981146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Nasoni",
+        "concelho": null,
+        "notas": "61 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16997484377902",
+        "longitude": "-8.579081889677575",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.replica.pt/empreendimentos/detalhe/edificio-nasoni_534/pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.579081889677575,
+          41.16997484377902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Ferreira Castro Flats",
+        "concelho": null,
+        "notas": "38 Apartamentos T0/T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15092817890355",
+        "longitude": "-8.593203933652424",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.593203933652424,
+          41.15092817890355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "GJ 432",
+        "concelho": null,
+        "notas": "5 Apartamentos T2/T3 - 1 apt por piso",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15699358401292",
+        "longitude": "-8.636762289678124",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://moraissoaresarquitectos.pt/pt-pt/projectos/guerra-junqueiro-432/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.636762289678124,
+          41.15699358401292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Cartes L3",
+        "concelho": null,
+        "notas": "Apartamentos T0/T1",
+        "estado": "Em licenciamento",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16140986278274",
+        "longitude": "-8.57400901851421",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://carfam.pt/projectos-em-desenvolvimento/cartes-l3/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.57400901851421,
+          41.16140986278274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Eden",
+        "concelho": null,
+        "notas": "43 Apartamentos de T1 a T5",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16351582742485",
+        "longitude": "-8.677519848431455",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.nomadeden.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.677519848431455,
+          41.16351582742485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Ouro Valley - Rio Tinto",
+        "concelho": null,
+        "notas": "219 Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.166472610941376",
+        "longitude": "-8.549377901404133",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://gfh.pt/pt/portfolio/ouro-valley/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.549377901404133,
+          41.166472610941376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Limites de Espinho",
+        "concelho": null,
+        "notas": "16 Apartamentos T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "40.98357002058062",
+        "longitude": "-8.622787544637047",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://remax.pt/pt/empreendimento/empreendimento-rua-dos-limites/8465"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.622787544637047,
+          40.98357002058062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Espinho Beach Residences",
+        "concelho": null,
+        "notas": "65 Apartamentos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.00279747137172",
+        "longitude": "-8.64483656250803",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://espinhobeachresidences.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.64483656250803,
+          41.00279747137172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "light Sea",
+        "concelho": null,
+        "notas": "9 Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.00876586582515",
+        "longitude": "-8.635710489685447",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://mafavis.pt/portfolio/light-sea/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.635710489685447,
+          41.00876586582515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The Line",
+        "concelho": null,
+        "notas": "18 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16490244275441",
+        "longitude": "-8.635848271097249",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://mafavis.pt/portfolio/the-line/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.635848271097249,
+          41.16490244275441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Black&White",
+        "concelho": null,
+        "notas": "12 Apartamentos T1/T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.006399623376694",
+        "longitude": "-8.627753231682597",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://blackwhite.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.627753231682597,
+          41.006399623376694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Twins 22",
+        "concelho": null,
+        "notas": "46 Apartamentos T1/T2/T3",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.00217838827017",
+        "longitude": "-8.638982350142372",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://twins22.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.638982350142372,
+          41.00217838827017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Green Golf Villas",
+        "concelho": null,
+        "notas": "9 Moradias T3+1 e T4",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14119731337355",
+        "longitude": "-8.568019960489835",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.568019960489835,
+          41.14119731337355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Orizon Living",
+        "concelho": null,
+        "notas": "200 Apartamentos T1 a T4 - Comercialização Réplica e Dills",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14119731337355",
+        "longitude": "-8.568019960489835",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://www.shaluinvest.pt/orizon-living"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.568019960489835,
+          41.14119731337355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Lurion",
+        "concelho": null,
+        "notas": "Apartamentos de T0 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13324972791349",
+        "longitude": "-8.599380974599644",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://revito.pt/project/solar/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.599380974599644,
+          41.13324972791349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Edificio Quinta Amarela",
+        "concelho": null,
+        "notas": "14 Apartamentos T1/T2/T3/T4 - Imotolouse",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.163804619468614",
+        "longitude": "-8.626332431884752",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://imotolouse.pt/portfolio/quinta-amarela/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.626332431884752,
+          41.163804619468614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The Garden - Matosinhos - Colégio Efanor",
+        "concelho": null,
+        "notas": "146 Apartamentos T0 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.18622693333881",
+        "longitude": "-8.650575274212445",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.jardinsefanor.pt/pages/edificio-lake/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.650575274212445,
+          41.18622693333881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Santa´s Residence",
+        "concelho": null,
+        "notas": "Apartamentos T2 e T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.21174431980964",
+        "longitude": "-8.57398568955385",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://jcgroup.pt/jcimobiliaria/imoveis/aguas-santas/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.57398568955385,
+          41.21174431980964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Unique - Padrão da Légua - Av. Xana Gusmão",
+        "concelho": null,
+        "notas": "55 Apartamentos T1 a T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.19120673838551",
+        "longitude": "-8.633362131883537",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/33989967/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.633362131883537,
+          41.19120673838551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Cais de Leça",
+        "concelho": null,
+        "notas": "29 Apartamentos T1/T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.19490723468792",
+        "longitude": "-8.69333716071897",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/33985409/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.69333716071897,
+          41.19490723468792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Val D'Ouro Palace",
+        "concelho": null,
+        "notas": "13 apartamentos T1 a T4 e 1 VillaT4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14580811803748",
+        "longitude": "-8.621418674214297",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://valdouropalace.com/pt/home-2/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.621418674214297,
+          41.14580811803748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "The ViewII",
+        "concelho": null,
+        "notas": "29 Apartamentos T2/T3/T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.138206195174526",
+        "longitude": "-8.569972660721525",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.rivage.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.569972660721525,
+          41.138206195174526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Aurora Flower Tower",
+        "concelho": null,
+        "notas": "124 Apartamentos T1 a T3 - 22 pisos",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.198655625441276",
+        "longitude": "-8.692305958869394",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.vizta.pt/pt/projetos/flower-tower-aurora/3616/?utm_source=google&utm_medium=cpc&utm_campaign=aurora_brand&gad_source=1&gad_campaignid=23009199109&gbraid=0AAAAACKIjOkCn8AGRlntX3SFfkkFkt9ue&gclid=Cj0KCQjwl5jHBhDHARIsAB0Yqjxj4oQD8COAenud-Az3Sfey04yxL9L35lyqLKWBOcPVg6fhXF0vtIEaAi1PEALw_wcB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.692305958869394,
+          41.198655625441276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Ocean´s Residence",
+        "concelho": null,
+        "notas": "Apartamentos T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.277939981448874",
+        "longitude": "-8.72407064537272",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/33217139/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.72407064537272,
+          41.277939981448874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Serpa 687",
+        "concelho": null,
+        "notas": "Apartamentos T1 ",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.18103519400735",
+        "longitude": "-8.69118058770581",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.martinaarch.com/project/sp687/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.69118058770581,
+          41.18103519400735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Pleno",
+        "concelho": null,
+        "notas": "110 Apartamnetos T1 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.20236599443278",
+        "longitude": "-8.567972789554286",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.vizta.pt/pt/projetos/pleno/4051/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.567972789554286,
+          41.20236599443278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Miramar IV",
+        "concelho": null,
+        "notas": "Apartamentos T1/T2/T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11888377446066",
+        "longitude": "-8.631533077860519",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.sublimar.pt/edificios-residenciais/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.631533077860519,
+          41.11888377446066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Cedofeita 271",
+        "concelho": null,
+        "notas": "7 Apartamentos T0 e 1 T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15193445457889",
+        "longitude": "-8.61776491654277",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/34400011/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.61776491654277,
+          41.15193445457889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Alvares Cabral 91",
+        "concelho": null,
+        "notas": "8 Apartamentos  T0 e T1",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15536864442187",
+        "longitude": "-8.617731489556366",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/republica-square/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.617731489556366,
+          41.15536864442187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Ivens 734",
+        "concelho": null,
+        "notas": "17 Apartamentos T1 - Rc + 4 pisos",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.18112664356008",
+        "longitude": "-8.690685874212722",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/ivens-matosinhos-sul/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.690685874212722,
+          41.18112664356008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Catarina 677",
+        "concelho": null,
+        "notas": "3 Apartamentos T1 e T2",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15240873160375",
+        "longitude": "-8.60499246072091",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/santa-catarina/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60499246072091,
+          41.15240873160375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sá da Bandeira 31/39",
+        "concelho": null,
+        "notas": "8 Apartamentos T0/T2/T3 + 1 comercial",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14665408674756",
+        "longitude": "-8.610243076063638",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/sa-da-bandeira/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.610243076063638,
+          41.14665408674756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Almada 631",
+        "concelho": null,
+        "notas": "8 apartamentos T1 e T3 Triplex",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15319693753287",
+        "longitude": "-8.612223618392102",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://royal-ventures.com/projects/almada/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.612223618392102,
+          41.15319693753287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Passos Manuel 182",
+        "concelho": null,
+        "notas": "7 Apartamentos T1 / T2 duplex / Penthouse - Comercializado pela Dills",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.14686526957011",
+        "longitude": "-8.605599560721135",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/31693901/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.605599560721135,
+          41.14686526957011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Aliados 9",
+        "concelho": null,
+        "notas": "1 Apartamento T2",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1472694832845",
+        "longitude": "-8.611646283837771",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/34130962/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.611646283837771,
+          41.1472694832845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Palácio Fervença",
+        "concelho": null,
+        "notas": "Apartamentos T1 e T2",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13733062671569",
+        "longitude": "-8.610692119804538",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.garveturproperties.com/detalhes-do-empreendimento/apartamentos-de-luxo-em-vila-nova-de-gaia/21689481"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.610692119804538,
+          41.13733062671569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Boavista II",
+        "concelho": null,
+        "notas": "46 Apartamentos T2/T3/T4",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.15709128871051",
+        "longitude": "-8.624737520462414",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/32458380/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.624737520462414,
+          41.15709128871051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": " Pac Man Bulding",
+        "concelho": null,
+        "notas": "apartamentos T1, T2, T3 e duplex",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.179854796942315",
+        "longitude": "-8.679206874415108",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.predialmar.pt/empreendimento/pac-man-building/21119410"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.679206874415108,
+          41.179854796942315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "O2 Maia",
+        "concelho": null,
+        "notas": "54 Apartamentos T1 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.23864454080866",
+        "longitude": "-8.620794396287629",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://abbimoveis.com/?jsf=bricks-query-loop&tax=zona:93"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.620794396287629,
+          41.23864454080866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Serralves",
+        "concelho": null,
+        "notas": "87 Apartamentos T1 a T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.156927584760425",
+        "longitude": "-8.651765329066805",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://abbimoveis.com/imobiliario-habitacao/serralves/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.651765329066805,
+          41.156927584760425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Prisma Douro",
+        "concelho": null,
+        "notas": "6 Apartamento - 3 T2 e 3 T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.148624643265855",
+        "longitude": "-8.636486060922728",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.pfarchviz.com/pt/prisma-douro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.636486060922728,
+          41.148624643265855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Torrinha 337",
+        "concelho": null,
+        "notas": "4 Apartamentos T1",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.152872951803225",
+        "longitude": "-8.623475047464963",
+        "conclusao": "2025.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/34509751/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.623475047464963,
+          41.152872951803225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Villa Arpel São Roque",
+        "concelho": null,
+        "notas": "5 Apartamentos T2 e T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16505922387608",
+        "longitude": "-8.572239175316545",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/33847018/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.572239175316545,
+          41.16505922387608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Freixo Residence",
+        "concelho": null,
+        "notas": "11 Apartamentos T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.141758223625196",
+        "longitude": "-8.572207543200904",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.idealista.pt/empreendimento/34509753/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.572207543200904,
+          41.141758223625196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Oceanic Reserve",
+        "concelho": null,
+        "notas": "14 Residencias T3 e T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.25026896346896",
+        "longitude": "-8.717503774440955",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://www.oceanicreserve.com/en/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.717503774440955,
+          41.25026896346896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Villas Mearim",
+        "concelho": null,
+        "notas": "2 Moradias T4",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.18355998977074",
+        "longitude": "-8.685776774444362",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://prestigerealtyadvisors.pt/imovel/moradias/matosinhos/venda/villas-mearim/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.685776774444362,
+          41.18355998977074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Bow 136",
+        "concelho": null,
+        "notas": "8 Moradias T0 a T2 (Promotor - Formalidades)",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.1480766291095",
+        "longitude": "-8.66343984560978",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://prestigerealtyadvisors.pt/imovel/empreendimentos/porto/venda/bow-136/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.66343984560978,
+          41.1480766291095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Brito Capelo 1023",
+        "concelho": null,
+        "notas": "75 Apartamentos T1 a T4",
+        "estado": "Licenciado",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.17906139863145",
+        "longitude": "-8.689093289790566",
+        "conclusao": "2028.0",
+        "preço_m2": null,
+        "link": "https://prestigerealtyadvisors.pt/imovel/empreendimentos/matosinhos/venda/brito-capelo-1023/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.689093289790566,
+          41.17906139863145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Mira Douro",
+        "concelho": null,
+        "notas": "54 Apartamentos T2 a T4",
+        "estado": "Concluído",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.16054615042859",
+        "longitude": "-8.588436603834941",
+        "conclusao": "2023.0",
+        "preço_m2": null,
+        "link": "https://www.promiris.com/pt/projectos/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.588436603834941,
+          41.16054615042859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Oporto Luxury Residences",
+        "concelho": null,
+        "notas": "84 Apartamentos T1 a T3",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.180230020996724",
+        "longitude": "-8.582827732261805",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.grupoarliz.pt/oporto-luxury-residences/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.582827732261805,
+          41.180230020996724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Greens Vila Moura",
+        "concelho": null,
+        "notas": null,
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "37.10728614237546",
+        "longitude": "-8.142323603740383",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": "https://www.garveturproperties.com/detalhes-do-empreendimento/empreendimento-greens-vilamoura-apartamentos-t2-a-t5/19762419"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.142323603740383,
+          37.10728614237546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Oriental Park",
+        "concelho": null,
+        "notas": "18 Apartamentos T0 a T2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.151594459593056",
+        "longitude": "-8.566722564135889",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://prestigerealtyadvisors.pt/imovel/apartamentos/porto/venda/oriental-park/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.566722564135889,
+          41.151594459593056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Matsu",
+        "concelho": null,
+        "notas": "15 Apartamento T1 + 2 Lojas",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.156751813338325",
+        "longitude": "-8.625018954219062",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://matsuporto.pt/wp-content/uploads/2025/10/MATSU-PORTO_Brochura-Digital_PT.pdf"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.625018954219062,
+          41.156751813338325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Vintage 18",
+        "concelho": null,
+        "notas": null,
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13222328978224",
+        "longitude": "-8.625819154989989",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://www.vintage18.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.625819154989989,
+          41.13222328978224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Kori Douro",
+        "concelho": null,
+        "notas": "Simple Smart S1 e S2",
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.13207754360183",
+        "longitude": "-8.626357537767738",
+        "conclusao": "2026.0",
+        "preço_m2": null,
+        "link": "https://douro.kori.com.pt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.626357537767738,
+          41.13207754360183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Quinta Cravel - Kori",
+        "concelho": null,
+        "notas": null,
+        "estado": "Em construção",
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.11408571715527",
+        "longitude": "-8.60131763155496",
+        "conclusao": "2027.0",
+        "preço_m2": null,
+        "link": "https://cravel.kori.com.pt/?gad_source=1&gad_campaignid=22223823485&gbraid=0AAAAAocFJYoonkKlwyALqE-vzoveWIpd0&gclid=Cj0KCQjw9obIBhCAARIsAGHm1mQB7ELrjFX8xIIk_jqrKRmhtt-e1DrFAru9NzE4ExOFVNCawu3NOUIaAuuoEALw_wcB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.60131763155496,
+          41.11408571715527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Casal de Passos",
+        "concelho": null,
+        "notas": "2 Apartamentos T3",
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": "41.162763210779346",
+        "longitude": "-8.670590208487024",
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.670590208487024,
+          41.162763210779346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": null,
+        "concelho": null,
+        "notas": null,
+        "estado": null,
+        "promotor": null,
+        "tipologia": null,
+        "latitude": null,
+        "longitude": null,
+        "conclusao": null,
+        "preço_m2": null,
+        "link": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          NaN,
+          NaN
+        ]
+      }
+    }
+  ]
+}
